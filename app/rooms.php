@@ -18,7 +18,8 @@ class rooms extends Model
         'address_detail',
         'category_id',
         'rent',
-        'description',
+        'quantity',
+        'desc',
         'user_id',
         'house_rules',
     ];
