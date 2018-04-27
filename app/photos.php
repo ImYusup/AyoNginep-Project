@@ -15,4 +15,9 @@ class photos extends Model
         'room_id',
         'image'
     ];
+
+    public function rooms()
+    {
+        return $this->belongsTo('App\rooms');
+    }
 }

@@ -14,4 +14,14 @@ class orders extends Model
     protected $fillable = [
         'user_id'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function order_details()
+    {
+        return $this->hasOne('App\order_details');
+    }
 }

@@ -14,4 +14,9 @@ class amenity_items extends Model
     protected $fillable = [
         'item'
     ];
+    
+    public function amenities()
+    {
+        return $this->hasMany('App\amenities');
+    }
 }

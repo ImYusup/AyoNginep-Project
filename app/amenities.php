@@ -12,7 +12,17 @@ class amenities extends Model
      * @var array
      */
     protected $fillable = [
-        'room_amenity_id',
+        'room_id',
         'amenity_item_id'
     ];
+
+    public function rooms()
+    {
+        return $this->belongsTo('App\rooms');
+    }
+
+    public function amenity_items()
+    {
+        return $this->belongsTo('App\amenity_items');
+    }
 }

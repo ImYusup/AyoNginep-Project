@@ -15,4 +15,14 @@ class favorites extends Model
         'user_id',
         'room_id'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function rooms()
+    {
+        return $this->belongsTo('App\rooms');
+    }
 }

@@ -18,4 +18,14 @@ class order_details extends Model
         'check_out_date',
         'guest'
     ];
+
+    public function rooms()
+    {
+        return $this->belongsTo('App\rooms');
+    }
+
+    public function orders()
+    {
+        return $this->belongsTo('App\orders');
+    }
 }

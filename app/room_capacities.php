@@ -17,5 +17,10 @@ class room_capacities extends Model
         'bathroom',
         'person',
     ];
+
+    public function rooms()
+    {
+        return $this->hasOne('App\rooms');
+    }
 }
 
