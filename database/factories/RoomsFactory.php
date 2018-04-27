@@ -10,7 +10,6 @@ $factory->define(App\rooms::class, function (Faker $faker) {
         'address_detail'=>$faker->address,
         'category_id'=>$faker->randomDigitNotNull,
         'rent'=>$faker->numberBetween($min = 1000000, $max = 9000000),
-        'quantity'=>$faker->randomDigitNotNull,
         'desc'=>$faker->paragraph($nb = 3, $asText = false),
         'user_id'=>$faker->randomDigitNotNull,
         'house_rules'=>$faker->paragraph($nb = 2, $asText = false),

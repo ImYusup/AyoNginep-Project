@@ -21,7 +21,6 @@ class CreateRoomsTable extends Migration
             $table->text('address_detail')->nullable(false);
             $table->string('category_id')->nullable(false);
             $table->integer('rent')->nullable(false);
-            $table->integer('quantity')->nullable(false);
             $table->text('desc')->nullable(false);
             $table->string('user_id')->nullable(false);
             $table->text('house_rules')->nullable(false);
