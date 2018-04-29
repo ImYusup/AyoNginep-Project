@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\photos;
+use App\TableData\Amenities;
 use Illuminate\Http\Request;
 
-class PhotosController extends Controller
+class AmenitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PhotosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\photos  $photos
+     * @param  \App\amenities  $amenities
      * @return \Illuminate\Http\Response
      */
-    public function show(photos $photos)
+    public function show(amenities $amenities)
     {
         //
     }
@@ -52,10 +52,10 @@ class PhotosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\photos  $photos
+     * @param  \App\amenities  $amenities
      * @return \Illuminate\Http\Response
      */
-    public function edit(photos $photos)
+    public function edit(amenities $amenities)
     {
         //
     }
@@ -64,10 +64,10 @@ class PhotosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\photos  $photos
+     * @param  \App\amenities  $amenities
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, photos $photos)
+    public function update(Request $request, amenities $amenities)
     {
         //
     }
@@ -75,10 +75,10 @@ class PhotosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\photos  $photos
+     * @param  \App\amenities  $amenities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(photos $photos)
+    public function destroy(amenities $amenities)
     {
         //
     }

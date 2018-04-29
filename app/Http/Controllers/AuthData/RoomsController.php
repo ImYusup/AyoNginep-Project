@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\room_capacities;
+use App\TableData\Rooms;
 use Illuminate\Http\Request;
 
-class RoomCapacitiesController extends Controller
+class RoomsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RoomCapacitiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\room_capacities  $room_capacities
+     * @param  \App\rooms  $rooms
      * @return \Illuminate\Http\Response
      */
-    public function show(room_capacities $room_capacities)
+    public function show(rooms $rooms)
     {
         //
     }
@@ -52,10 +52,10 @@ class RoomCapacitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\room_capacities  $room_capacities
+     * @param  \App\rooms  $rooms
      * @return \Illuminate\Http\Response
      */
-    public function edit(room_capacities $room_capacities)
+    public function edit(rooms $rooms)
     {
         //
     }
@@ -64,10 +64,10 @@ class RoomCapacitiesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\room_capacities  $room_capacities
+     * @param  \App\rooms  $rooms
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, room_capacities $room_capacities)
+    public function update(Request $request, rooms $rooms)
     {
         //
     }
@@ -75,10 +75,10 @@ class RoomCapacitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\room_capacities  $room_capacities
+     * @param  \App\rooms  $rooms
      * @return \Illuminate\Http\Response
      */
-    public function destroy(room_capacities $room_capacities)
+    public function destroy(rooms $rooms)
     {
         //
     }

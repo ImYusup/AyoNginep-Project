@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\amenity_items;
+use App\TableData\Favorites;
 use Illuminate\Http\Request;
 
-class AmenityItemsController extends Controller
+class FavoritesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AmenityItemsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\amenity_items  $amenity_items
+     * @param  \App\favorites  $favorites
      * @return \Illuminate\Http\Response
      */
-    public function show(amenity_items $amenity_items)
+    public function show(favorites $favorites)
     {
         //
     }
@@ -52,10 +52,10 @@ class AmenityItemsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\amenity_items  $amenity_items
+     * @param  \App\favorites  $favorites
      * @return \Illuminate\Http\Response
      */
-    public function edit(amenity_items $amenity_items)
+    public function edit(favorites $favorites)
     {
         //
     }
@@ -64,10 +64,10 @@ class AmenityItemsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\amenity_items  $amenity_items
+     * @param  \App\favorites  $favorites
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, amenity_items $amenity_items)
+    public function update(Request $request, favorites $favorites)
     {
         //
     }
@@ -75,10 +75,10 @@ class AmenityItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\amenity_items  $amenity_items
+     * @param  \App\favorites  $favorites
      * @return \Illuminate\Http\Response
      */
-    public function destroy(amenity_items $amenity_items)
+    public function destroy(favorites $favorites)
     {
         //
     }

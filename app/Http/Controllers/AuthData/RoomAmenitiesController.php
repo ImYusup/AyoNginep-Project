@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\order_details;
+use App\TableData\Room_amenities;
 use Illuminate\Http\Request;
 
-class OrderDetailsController extends Controller
+class RoomAmenitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OrderDetailsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\order_details  $order_details
+     * @param  \App\room_amenities  $room_amenities
      * @return \Illuminate\Http\Response
      */
-    public function show(order_details $order_details)
+    public function show(room_amenities $room_amenities)
     {
         //
     }
@@ -52,10 +52,10 @@ class OrderDetailsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\order_details  $order_details
+     * @param  \App\room_amenities  $room_amenities
      * @return \Illuminate\Http\Response
      */
-    public function edit(order_details $order_details)
+    public function edit(room_amenities $room_amenities)
     {
         //
     }
@@ -64,10 +64,10 @@ class OrderDetailsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\order_details  $order_details
+     * @param  \App\room_amenities  $room_amenities
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order_details $order_details)
+    public function update(Request $request, room_amenities $room_amenities)
     {
         //
     }
@@ -75,10 +75,10 @@ class OrderDetailsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\order_details  $order_details
+     * @param  \App\room_amenities  $room_amenities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order_details $order_details)
+    public function destroy(room_amenities $room_amenities)
     {
         //
     }

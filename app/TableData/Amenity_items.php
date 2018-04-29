@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class photos extends Model
+class Amenity_items extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,12 +12,11 @@ class photos extends Model
      * @var array
      */
     protected $fillable = [
-        'room_id',
-        'image'
+        'item'
     ];
-
-    public function rooms()
+    
+    public function amenities()
     {
-        return $this->belongsTo('App\rooms');
+        return $this->hasMany('App\TableData\Amenities');
     }
 }

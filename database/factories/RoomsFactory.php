@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\rooms::class, function (Faker $faker) {
+$factory->define(App\TableData\Rooms::class, function (Faker $faker) {
     return [
         'name'=>$faker->unique()->firstNameFemale,
         'district'=>$faker->streetName,

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\rooms;
+use App\TableData\Photos;
 use Illuminate\Http\Request;
 
-class RoomsController extends Controller
+class PhotosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RoomsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\rooms  $rooms
+     * @param  \App\photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function show(rooms $rooms)
+    public function show(photos $photos)
     {
         //
     }
@@ -52,10 +52,10 @@ class RoomsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\rooms  $rooms
+     * @param  \App\photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function edit(rooms $rooms)
+    public function edit(photos $photos)
     {
         //
     }
@@ -64,10 +64,10 @@ class RoomsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\rooms  $rooms
+     * @param  \App\photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, rooms $rooms)
+    public function update(Request $request, photos $photos)
     {
         //
     }
@@ -75,10 +75,10 @@ class RoomsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\rooms  $rooms
+     * @param  \App\photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(rooms $rooms)
+    public function destroy(photos $photos)
     {
         //
     }

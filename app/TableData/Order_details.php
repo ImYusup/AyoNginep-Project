@@ -1,16 +1,17 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class order_details extends Model
+class Order_details extends Model
 {
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = 'order_details';
     protected $fillable = [
         'order_id',
         'room_id',
@@ -21,11 +22,11 @@ class order_details extends Model
 
     public function rooms()
     {
-        return $this->belongsTo('App\rooms');
+        return $this->belongsTo('App\TableData\Rooms');
     }
 
     public function orders()
     {
-        return $this->belongsTo('App\orders');
+        return $this->belongsTo('App\TableData\Orders');
     }
 }

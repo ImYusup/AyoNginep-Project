@@ -1,16 +1,17 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class rooms extends Model
+class Rooms extends Model
 {
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = 'rooms';
     protected $fillable = [
         'name',
         'district',
@@ -25,36 +26,36 @@ class rooms extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\TableData\Users');
     }
 
     public function favorites()
     {
-        return $this->hasMany('App\favorites');
+        return $this->hasMany('App\TableData\Favorites');
     }
 
     public function categories()
     {
-        return $this->belongsTo('App\categories');
+        return $this->belongsTo('App\TableData\Categories');
     }
 
     public function photos()
     {
-        return $this->hasMany('App\photos');
+        return $this->hasMany('App\TableData\Photos');
     }
 
     public function order_details()
     {
-        return $this->hasMany('App\order_details');
+        return $this->hasMany('App\TableData\Order_details');
     }
 
     public function room_capacities()
     {
-        return $this->hasMany('App\room_capacities');
+        return $this->hasMany('App\TableData\Room_capacities');
     }
 
     public function amenities()
     {
-        return $this->hasMany('App\amenities');
+        return $this->hasMany('App\TableData\Amenities');
     }
 }

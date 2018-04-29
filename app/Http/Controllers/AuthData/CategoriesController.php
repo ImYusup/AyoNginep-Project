@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\room_amenities;
+use App\TableData\Categories;
 use Illuminate\Http\Request;
 
-class RoomAmenitiesController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RoomAmenitiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\room_amenities  $room_amenities
+     * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(room_amenities $room_amenities)
+    public function show(categories $categories)
     {
         //
     }
@@ -52,10 +52,10 @@ class RoomAmenitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\room_amenities  $room_amenities
+     * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(room_amenities $room_amenities)
+    public function edit(categories $categories)
     {
         //
     }
@@ -64,10 +64,10 @@ class RoomAmenitiesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\room_amenities  $room_amenities
+     * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, room_amenities $room_amenities)
+    public function update(Request $request, categories $categories)
     {
         //
     }
@@ -75,10 +75,10 @@ class RoomAmenitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\room_amenities  $room_amenities
+     * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(room_amenities $room_amenities)
+    public function destroy(categories $categories)
     {
         //
     }

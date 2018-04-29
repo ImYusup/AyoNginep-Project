@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\favorites;
+use App\TableData\Room_capacities;
 use Illuminate\Http\Request;
 
-class FavoritesController extends Controller
+class RoomCapacitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class FavoritesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\favorites  $favorites
+     * @param  \App\room_capacities  $room_capacities
      * @return \Illuminate\Http\Response
      */
-    public function show(favorites $favorites)
+    public function show(room_capacities $room_capacities)
     {
         //
     }
@@ -52,10 +52,10 @@ class FavoritesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\favorites  $favorites
+     * @param  \App\room_capacities  $room_capacities
      * @return \Illuminate\Http\Response
      */
-    public function edit(favorites $favorites)
+    public function edit(room_capacities $room_capacities)
     {
         //
     }
@@ -64,10 +64,10 @@ class FavoritesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\favorites  $favorites
+     * @param  \App\room_capacities  $room_capacities
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, favorites $favorites)
+    public function update(Request $request, room_capacities $room_capacities)
     {
         //
     }
@@ -75,10 +75,10 @@ class FavoritesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\favorites  $favorites
+     * @param  \App\room_capacities  $room_capacities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(favorites $favorites)
+    public function destroy(room_capacities $room_capacities)
     {
         //
     }

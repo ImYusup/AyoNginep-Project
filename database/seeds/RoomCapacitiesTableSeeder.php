@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\room_capacities;
+use App\TableData\Room_capacities;
 
 class RoomCapacitiesTableSeeder extends Seeder
 {
@@ -13,6 +13,6 @@ class RoomCapacitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\room_capacities::class, 20)->create();
+        factory(App\TableData\Room_capacities::class, 10)->create();
     }
 }

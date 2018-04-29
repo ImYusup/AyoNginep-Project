@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\amenities;
+use App\TableData\Order_details;
 use Illuminate\Http\Request;
 
-class AmenitiesController extends Controller
+class OrderDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AmenitiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\amenities  $amenities
+     * @param  \App\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function show(amenities $amenities)
+    public function show(order_details $order_details)
     {
         //
     }
@@ -52,10 +52,10 @@ class AmenitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\amenities  $amenities
+     * @param  \App\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function edit(amenities $amenities)
+    public function edit(order_details $order_details)
     {
         //
     }
@@ -64,10 +64,10 @@ class AmenitiesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\amenities  $amenities
+     * @param  \App\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, amenities $amenities)
+    public function update(Request $request, order_details $order_details)
     {
         //
     }
@@ -75,10 +75,10 @@ class AmenitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\amenities  $amenities
+     * @param  \App\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function destroy(amenities $amenities)
+    public function destroy(order_details $order_details)
     {
         //
     }

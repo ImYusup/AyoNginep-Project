@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\orders;
+use App\TableData\Amenity_items;
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller
+class AmenityItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\orders  $orders
+     * @param  \App\amenity_items  $amenity_items
      * @return \Illuminate\Http\Response
      */
-    public function show(orders $orders)
+    public function show(amenity_items $amenity_items)
     {
         //
     }
@@ -52,10 +52,10 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\orders  $orders
+     * @param  \App\amenity_items  $amenity_items
      * @return \Illuminate\Http\Response
      */
-    public function edit(orders $orders)
+    public function edit(amenity_items $amenity_items)
     {
         //
     }
@@ -64,10 +64,10 @@ class OrdersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\orders  $orders
+     * @param  \App\amenity_items  $amenity_items
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, orders $orders)
+    public function update(Request $request, amenity_items $amenity_items)
     {
         //
     }
@@ -75,10 +75,10 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\orders  $orders
+     * @param  \App\amenity_items  $amenity_items
      * @return \Illuminate\Http\Response
      */
-    public function destroy(orders $orders)
+    public function destroy(amenity_items $amenity_items)
     {
         //
     }

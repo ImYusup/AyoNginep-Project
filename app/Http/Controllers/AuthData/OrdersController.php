@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthData;
 
-use App\categories;
+use App\TableData\Orders;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\categories  $categories
+     * @param  \App\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(categories $categories)
+    public function show(orders $orders)
     {
         //
     }
@@ -52,10 +52,10 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\categories  $categories
+     * @param  \App\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $categories)
+    public function edit(orders $orders)
     {
         //
     }
@@ -64,10 +64,10 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\categories  $categories
+     * @param  \App\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, orders $orders)
     {
         //
     }
@@ -75,10 +75,10 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\categories  $categories
+     * @param  \App\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $categories)
+    public function destroy(orders $orders)
     {
         //
     }
