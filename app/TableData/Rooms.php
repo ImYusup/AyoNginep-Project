@@ -26,36 +26,36 @@ class Rooms extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\TableData\Users');
+        return $this->belongsTo('App\TableData\Users', 'user_id');
     }
 
     public function favorites()
     {
-        return $this->hasMany('App\TableData\Favorites');
+        return $this->hasMany('App\TableData\Favorites', 'room_id');
     }
 
     public function categories()
     {
-        return $this->belongsTo('App\TableData\Categories');
+        return $this->belongsTo('App\TableData\Categories', 'category_id');
     }
 
     public function photos()
     {
-        return $this->hasMany('App\TableData\Photos');
+        return $this->hasMany('App\TableData\Photos', 'room_id');
     }
 
     public function order_details()
     {
-        return $this->hasMany('App\TableData\Order_details');
+        return $this->hasMany('App\TableData\Order_details', 'room_id');
     }
 
     public function room_capacities()
     {
-        return $this->hasMany('App\TableData\Room_capacities');
+        return $this->hasOne('App\TableData\Room_capacities', 'room_id');
     }
 
     public function amenities()
     {
-        return $this->hasMany('App\TableData\Amenities');
+        return $this->hasMany('App\TableData\Amenities', 'room_id');
     }
 }

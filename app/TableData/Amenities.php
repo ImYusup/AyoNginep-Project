@@ -19,11 +19,11 @@ class Amenities extends Model
 
     public function rooms()
     {
-        return $this->belongsTo('App\TableData\Rooms');
+        return $this->belongsTo('App\TableData\Rooms', 'room_id');
     }
 
     public function amenity_items()
     {
-        return $this->belongsTo('App\TableData\Amenity_items');
+        return $this->belongsTo('App\TableData\Amenity_items', 'amenity_item_id');
     }
 }

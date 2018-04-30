@@ -18,6 +18,6 @@ class Photos extends Model
 
     public function rooms()
     {
-        return $this->belongsTo('App\TableData\Rooms');
+        return $this->belongsTo('App\TableData\Rooms', 'room_id');
     }
 }

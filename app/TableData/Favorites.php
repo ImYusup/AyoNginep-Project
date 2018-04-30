@@ -18,11 +18,11 @@ class Favorites extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\TableData\User');
+        return $this->belongsTo('App\TableData\Users', 'user_id');
     }
 
     public function rooms()
     {
-        return $this->belongsTo('App\TableData\Rooms');
+        return $this->belongsTo('App\TableData\Rooms', 'room_id');
     }
 }

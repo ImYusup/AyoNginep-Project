@@ -20,13 +20,13 @@ class Order_details extends Model
         'guest'
     ];
 
-    public function rooms()
-    {
-        return $this->belongsTo('App\TableData\Rooms');
-    }
-
     public function orders()
     {
-        return $this->belongsTo('App\TableData\Orders');
+        return $this->belongsTo('App\TableData\Orders', 'order_id');
+    }
+
+    public function rooms()
+    {
+        return $this->belongsTo('App\TableData\Rooms', 'room_id');
     }
 }

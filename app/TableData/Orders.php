@@ -18,11 +18,11 @@ class Orders extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\TableData\Users');
+        return $this->belongsTo('App\TableData\Users', 'user_id');
     }
 
     public function order_details()
     {
-        return $this->hasOne('App\TableData\Order_details');
+        return $this->hasOne('App\TableData\Order_details', 'order_id');
     }
 }

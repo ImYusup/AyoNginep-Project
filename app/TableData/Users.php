@@ -39,16 +39,16 @@ class Users extends Authenticatable
 
     public function favorites()
     {
-        return $this->hasMany('App\TableData\Favorites');
+        return $this->hasMany('App\TableData\Favorites', 'user_id');
     }
 
     public function rooms()
     {
-        return $this->hasMany('App\TableData\Rooms');
+        return $this->hasMany('App\TableData\Rooms', 'room_id');
     }
 
     public function orders()
     {
-        return $this->hasMany('App\TableData\Orders');
+        return $this->hasMany('App\TableData\Orders', 'order_id');
     }
 }
