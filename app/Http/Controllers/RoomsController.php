@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\rooms;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class RoomsController extends Controller
 {
@@ -14,7 +15,8 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        //
+        $allrooms = rooms::all();
+        return ($allrooms);
     }
 
     /**
@@ -35,7 +37,19 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        rooms::create([
+            'name' => $request -> name,
+            'district' => $request -> district,
+            'coordinate' => $request -> coordinate,
+            'address_detail' => $request -> address_detail,
+            'category_id' => $request -> category_id,
+            'rent' => $request -> rent,
+            'desc' => $request -> desc,
+            'user_id' => $request -> user_id,
+            'house_rules' => $request -> house_rules
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +58,9 @@ class RoomsController extends Controller
      * @param  \App\rooms  $rooms
      * @return \Illuminate\Http\Response
      */
-    public function show(rooms $rooms)
+    public function show(rooms $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -67,9 +81,20 @@ class RoomsController extends Controller
      * @param  \App\rooms  $rooms
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, rooms $rooms)
+    public function update(Request $request, rooms $id)
     {
-        //
+        $id -> name = "{$request -> name}";
+        // $id -> district = "{$request -> district}";
+        // $id -> coordinate = "{$request -> coordinate}";
+        // $id -> address_detail = "{$request -> address_detail}";
+        // $id -> category_id = "{$request -> category_id}";
+        // $id -> rent = "{$request -> rent}";
+        // $id -> desc = "{$request -> desc}";
+        // $id -> user_id = "{$request -> user_id}";
+        // $id -> house_rules = "{$request -> house_rules}";
+        $id->save();
+        // $cek = $request->name;
+        // return ($id-> name = 'precil');
     }
 
     /**
