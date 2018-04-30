@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\room_capacities;
+use App\TableData\Room_capacities;
 use Illuminate\Http\Request;
 
 class RoomCapacitiesController extends Controller
@@ -14,7 +14,7 @@ class RoomCapacitiesController extends Controller
      */
     public function index()
     {
-        //
+        return room_capacities::all();
     }
 
     /**
@@ -35,7 +35,14 @@ class RoomCapacitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        room_capacities::create([
+            'room_id' => $request -> room_id,
+            'bed' => $request -> bed,
+            'bathroom' => $request -> bathroom,
+            'person' => $request -> person
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +51,9 @@ class RoomCapacitiesController extends Controller
      * @param  \App\room_capacities  $room_capacities
      * @return \Illuminate\Http\Response
      */
-    public function show(room_capacities $room_capacities)
+    public function show(room_capacities $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -67,9 +74,9 @@ class RoomCapacitiesController extends Controller
      * @param  \App\room_capacities  $room_capacities
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, room_capacities $room_capacities)
+    public function update(Request $request, room_capacities $id)
     {
-        //
+        $id ->update($request -> all());
     }
 
     /**
@@ -78,8 +85,8 @@ class RoomCapacitiesController extends Controller
      * @param  \App\room_capacities  $room_capacities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(room_capacities $room_capacities)
+    public function destroy(room_capacities $id)
     {
-        //
+        $id -> delete();
     }
 }

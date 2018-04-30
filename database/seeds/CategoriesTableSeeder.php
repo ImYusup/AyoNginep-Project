@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\categories;
+use App\TableData\Categories;
 
 
 class CategoriesTableSeeder extends Seeder
@@ -14,6 +14,6 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\categories::class, 20)->create();
+        factory(App\TableData\Categories::class, 10)->create();
     }
 }

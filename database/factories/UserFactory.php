@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\TableData\Users::class, function (Faker $faker) {
     return [
         'email' => $faker->unique()->safeEmail,
         'password' => str_random(8), // secret

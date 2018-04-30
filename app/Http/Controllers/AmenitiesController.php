@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\amenities;
+use App\TableData\Amenities;
 use Illuminate\Http\Request;
 
 class AmenitiesController extends Controller
@@ -14,7 +14,7 @@ class AmenitiesController extends Controller
      */
     public function index()
     {
-        //
+        return amenities::all();
     }
 
     /**
@@ -35,7 +35,12 @@ class AmenitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        amenities::create([
+            'room_id' => $request -> room_id,
+            'amenity_item_id' => $request -> amenity_item_id
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +49,9 @@ class AmenitiesController extends Controller
      * @param  \App\amenities  $amenities
      * @return \Illuminate\Http\Response
      */
-    public function show(amenities $amenities)
+    public function show(amenities $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -78,8 +83,8 @@ class AmenitiesController extends Controller
      * @param  \App\amenities  $amenities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(amenities $amenities)
+    public function destroy(amenities $id)
     {
-        //
+        $id -> delete();
     }
 }

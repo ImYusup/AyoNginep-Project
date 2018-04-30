@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\amenity_items;
+use App\TableData\Amenity_items;
 use Illuminate\Http\Request;
 
 class AmenityItemsController extends Controller
@@ -14,7 +14,7 @@ class AmenityItemsController extends Controller
      */
     public function index()
     {
-        //
+        return amenity_items::all();
     }
 
     /**
@@ -35,7 +35,11 @@ class AmenityItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        amenity_items::create([
+            'item' => $request -> item
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +48,9 @@ class AmenityItemsController extends Controller
      * @param  \App\amenity_items  $amenity_items
      * @return \Illuminate\Http\Response
      */
-    public function show(amenity_items $amenity_items)
+    public function show(amenity_items $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -67,9 +71,9 @@ class AmenityItemsController extends Controller
      * @param  \App\amenity_items  $amenity_items
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, amenity_items $amenity_items)
+    public function update(Request $request, amenity_items $id)
     {
-        //
+        $id ->update($request -> all());        
     }
 
     /**
@@ -78,8 +82,8 @@ class AmenityItemsController extends Controller
      * @param  \App\amenity_items  $amenity_items
      * @return \Illuminate\Http\Response
      */
-    public function destroy(amenity_items $amenity_items)
+    public function destroy(amenity_items $id)
     {
-        //
+        $id -> delete();
     }
 }

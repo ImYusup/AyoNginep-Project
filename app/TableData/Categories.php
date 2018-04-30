@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class categories extends Model
+class Categories extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -17,6 +17,6 @@ class categories extends Model
 
     public function rooms()
     {
-        return $this->hasMany('App\rooms');
+        return $this->hasMany('App\DataTables\Rooms');
     }
 }

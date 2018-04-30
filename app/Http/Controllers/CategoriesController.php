@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\categories;
+use App\TableData\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return categories::all();
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +36,11 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        categories::create([
+            'name' => $request -> name
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +49,9 @@ class CategoriesController extends Controller
      * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(categories $categories)
+    public function show(categories $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -67,9 +72,9 @@ class CategoriesController extends Controller
      * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, categories $id)
     {
-        //
+        $id ->update($request -> all());
     }
 
     /**
@@ -78,8 +83,8 @@ class CategoriesController extends Controller
      * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $categories)
+    public function destroy(categories $id)
     {
-        //
+        $id->delete();
     }
 }

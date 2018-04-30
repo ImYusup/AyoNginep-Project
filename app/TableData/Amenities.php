@@ -1,16 +1,17 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class amenities extends Model
+class Amenities extends Model
 {
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = 'amenities';
     protected $fillable = [
         'room_id',
         'amenity_item_id'
@@ -18,11 +19,11 @@ class amenities extends Model
 
     public function rooms()
     {
-        return $this->belongsTo('App\rooms');
+        return $this->belongsTo('App\TableData\Rooms');
     }
 
     public function amenity_items()
     {
-        return $this->belongsTo('App\amenity_items');
+        return $this->belongsTo('App\TableData\Amenity_items');
     }
 }

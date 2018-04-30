@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\order_details;
+use App\TableData\Order_details;
 use Illuminate\Http\Request;
 
 class OrderDetailsController extends Controller
@@ -14,7 +14,7 @@ class OrderDetailsController extends Controller
      */
     public function index()
     {
-        //
+        return order_details::all();
     }
 
     /**
@@ -35,7 +35,15 @@ class OrderDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        order_details::create([
+            'order_id' => $request -> order_id,
+            'room_id' => $request -> room_id,
+            'check_in_date' => $request -> check_in_date,
+            'check_out_date' => $request -> check_out_date,
+            'guest' => $request -> guest
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +52,9 @@ class OrderDetailsController extends Controller
      * @param  \App\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function show(order_details $order_details)
+    public function show(order_details $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -78,8 +86,8 @@ class OrderDetailsController extends Controller
      * @param  \App\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order_details $order_details)
+    public function destroy(order_details $id)
     {
-        //
+        $id -> delete();
     }
 }

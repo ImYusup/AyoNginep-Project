@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Users extends Authenticatable
 {
     use Notifiable;
 
@@ -14,6 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
         'email',
         'password',
@@ -38,16 +39,16 @@ class User extends Authenticatable
 
     public function favorites()
     {
-        return $this->hasMany('App\favorites');
+        return $this->hasMany('App\TableData\Favorites');
     }
 
     public function rooms()
     {
-        return $this->hasMany('App\rooms');
+        return $this->hasMany('App\TableData\Rooms');
     }
 
     public function orders()
     {
-        return $this->hasMany('App\orders');
+        return $this->hasMany('App\TableData\Orders');
     }
 }

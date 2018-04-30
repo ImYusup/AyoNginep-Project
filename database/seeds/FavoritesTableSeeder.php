@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\favorites;
+use App\TableData\Favorites;
 
 
 class FavoritesTableSeeder extends Seeder
@@ -14,6 +14,6 @@ class FavoritesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\favorites::class, 20)->create();
+        factory(App\TableData\Favorites::class, 10)->create();
     }
 }

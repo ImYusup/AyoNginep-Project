@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\amenities;
+use App\TableData\Amenities;
 
 
 class AmenitiesTableSeeder extends Seeder
@@ -14,6 +14,6 @@ class AmenitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\amenities::class, 20)->create();
+        factory(App\TableData\Amenities::class, 10)->create();
     }
 }

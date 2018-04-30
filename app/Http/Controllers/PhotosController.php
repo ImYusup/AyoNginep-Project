@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\photos;
+use App\TableData\Photos;
 use Illuminate\Http\Request;
 
 class PhotosController extends Controller
@@ -14,7 +14,7 @@ class PhotosController extends Controller
      */
     public function index()
     {
-        //
+        return photos::all();
     }
 
     /**
@@ -35,7 +35,12 @@ class PhotosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        photos::create([
+            'room_id' => $request -> room_id,
+            'image' => $request -> image
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +49,9 @@ class PhotosController extends Controller
      * @param  \App\photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function show(photos $photos)
+    public function show(photos $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -78,8 +83,8 @@ class PhotosController extends Controller
      * @param  \App\photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(photos $photos)
+    public function destroy(photos $id)
     {
-        //
+        $id -> delete();
     }
 }

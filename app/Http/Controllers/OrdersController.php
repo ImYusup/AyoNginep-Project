@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\orders;
+use App\TableData\Orders;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -14,7 +14,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        return orders::all();
     }
 
     /**
@@ -24,7 +24,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        //  
     }
 
     /**
@@ -35,7 +35,10 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        orders::create([
+            'user_id' => $request -> user_id
+        ]);
+        return $request;
     }
 
     /**
@@ -44,9 +47,9 @@ class OrdersController extends Controller
      * @param  \App\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(orders $orders)
+    public function show(orders $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -78,8 +81,8 @@ class OrdersController extends Controller
      * @param  \App\orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function destroy(orders $orders)
+    public function destroy(orders $id)
     {
-        //
+        $id -> delete();
     }
 }

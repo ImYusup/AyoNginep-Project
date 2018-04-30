@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\order_details::class, function (Faker $faker) {
+$factory->define(App\TableData\Order_details::class, function (Faker $faker) {
     return [
         'order_id'=>$faker->randomDigitNotNull,
         'room_id'=>$faker->randomDigitNotNull,

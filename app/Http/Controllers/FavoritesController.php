@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\favorites;
+use App\TableData\Favorites;
 use Illuminate\Http\Request;
 
 class FavoritesController extends Controller
@@ -14,7 +14,7 @@ class FavoritesController extends Controller
      */
     public function index()
     {
-        //
+        return favorites::all();
     }
 
     /**
@@ -35,7 +35,12 @@ class FavoritesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        favorites::create([
+            'user_id' => $request -> user_id,
+            'room_id' => $request -> room_id
+        ]);
+
+        return $request;
     }
 
     /**
@@ -44,9 +49,9 @@ class FavoritesController extends Controller
      * @param  \App\favorites  $favorites
      * @return \Illuminate\Http\Response
      */
-    public function show(favorites $favorites)
+    public function show(favorites $id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -78,8 +83,8 @@ class FavoritesController extends Controller
      * @param  \App\favorites  $favorites
      * @return \Illuminate\Http\Response
      */
-    public function destroy(favorites $favorites)
+    public function destroy(favorites $id)
     {
-        //
+        $id->delete();
     }
 }

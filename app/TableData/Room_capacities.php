@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class room_capacities extends Model
+class Room_capacities extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,7 @@ class room_capacities extends Model
 
     public function rooms()
     {
-        return $this->hasOne('App\rooms');
+        return $this->hasOne('App\TableData\Rooms');
     }
 }
 

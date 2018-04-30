@@ -1,27 +1,28 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class orders extends Model
+class Orders extends Model
 {
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = 'orders';
     protected $fillable = [
         'user_id'
     ];
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\TableData\Users');
     }
 
     public function order_details()
     {
-        return $this->hasOne('App\order_details');
+        return $this->hasOne('App\TableData\Order_details');
     }
 }

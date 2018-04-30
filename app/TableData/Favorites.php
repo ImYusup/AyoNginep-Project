@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
 
-class favorites extends Model
+class Favorites extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -18,11 +18,11 @@ class favorites extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\TableData\User');
     }
 
     public function rooms()
     {
-        return $this->belongsTo('App\rooms');
+        return $this->belongsTo('App\TableData\Rooms');
     }
 }

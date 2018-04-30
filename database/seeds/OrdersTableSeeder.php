@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\orders;
+use App\TableData\Orders;
 
 
 class OrdersTableSeeder extends Seeder
@@ -14,6 +14,6 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\orders::class, 20)->create();
+        factory(App\TableData\Orders::class, 10)->create();
     }
 }
