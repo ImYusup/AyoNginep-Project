@@ -7,83 +7,34 @@ use Illuminate\Http\Request;
 
 class AmenityItemsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return amenity_items::all();
+        return amenity_items::with('amenities')
+            -> get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         amenity_items::create([
             'item' => $request -> item
         ]);
-
         return $request;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\amenity_items  $amenity_items
-     * @return \Illuminate\Http\Response
-     */
-    public function show(amenity_items $id)
+    public function show($id)
     {
-        return $id;
+        return amenity_items::with('amenities')
+            -> where('id', $id)
+            -> get();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\amenity_items  $amenity_items
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(amenity_items $amenity_items)
+    public function update(Request $request, amenity_items $amenity_item)
     {
-        //
+        $amenity_item ->update($request -> all());        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\amenity_items  $amenity_items
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, amenity_items $id)
+    public function destroy(amenity_items $amenity_item)
     {
-        $id ->update($request -> all());        
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\amenity_items  $amenity_items
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(amenity_items $id)
-    {
-        $id -> delete();
+        $amenity_item -> delete();
     }
 }

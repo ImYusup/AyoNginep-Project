@@ -17,6 +17,6 @@ class Categories extends Model
 
     public function rooms()
     {
-        return $this->hasMany('App\DataTables\Rooms');
+        return $this->hasMany ('App\TableData\Rooms', 'category_id');
     }
 }

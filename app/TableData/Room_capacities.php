@@ -20,7 +20,7 @@ class Room_capacities extends Model
 
     public function rooms()
     {
-        return $this->hasOne('App\TableData\Rooms');
+        return $this->belongsTo('App\TableData\Rooms', 'room_id');
     }
 }
 

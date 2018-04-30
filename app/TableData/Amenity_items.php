@@ -17,6 +17,6 @@ class Amenity_items extends Model
     
     public function amenities()
     {
-        return $this->hasMany('App\TableData\Amenities');
+        return $this->hasMany('App\TableData\Amenities', 'amenity_item_id');
     }
 }

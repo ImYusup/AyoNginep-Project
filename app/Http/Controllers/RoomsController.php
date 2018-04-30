@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\TableData\Rooms;
+use App\TableData\Photos;
+use App\TableData\Room_capacities;
+use App\TableData\Amenities;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -10,65 +13,58 @@ class RoomsController extends Controller
 {
     public function index()
     {
-        return rooms::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return rooms::with(['categories','favorites','photos','order_details','room_capacities','amenities'])
+            -> get();
     }
 
     public function store(Request $request)
     {
-        rooms::create([
-            'name' => $request -> name,
-            'district' => $request -> district,
-            'coordinate' => $request -> coordinate,
-            'address_detail' => $request -> address_detail,
-            'category_id' => $request -> category_id,
-            'rent' => $request -> rent,
-            'desc' => $request -> desc,
-            'user_id' => $request -> user_id,
-            'house_rules' => $request -> house_rules
+        $rar = rooms::create([
+                'name' => $request -> name,
+                'district' => $request -> district,
+                'coordinate' => $request -> coordinate,
+                'address_detail' => $request -> address_detail,
+                'category_id' => $request -> category_id,
+                'rent' => $request -> rent,
+                'desc' => $request -> desc,
+                'user_id' => $request -> user_id,
+                'house_rules' => $request -> house_rules
+            ]);
+
+        $rid = $rar->id;
+        
+        photos::create([
+            'room_id' => $rid,
+            'image' => $request -> image
         ]);
 
-        return $request;
+        room_capacities::create([
+            'room_id' => $rid,
+            'bed' => $request -> bed,
+            'bathroom' => $request -> bathroom,
+            'person' => $request -> person
+        ]);
+
+        amenities::create([
+            'room_id' => $rid,
+            'amenity_item_id' => $request -> amenity_item_id
+        ]);
     }
 
-    public function show(rooms $id)
+    public function show($id)
     {
-        return $id;
+        return rooms::with(['categories','favorites','photos','order_details','room_capacities','amenities'])
+            -> where('id', $id)
+            -> get();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\rooms  $rooms
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(rooms $rooms)
+    public function update(Request $request, rooms $room)
     {
-        //
+        $room -> update($request->all());
     }
 
-    public function update(Request $request, rooms $id)
+    public function destroy(rooms $room)
     {
-        $id ->update($request -> all());
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\rooms  $rooms
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(rooms $id)
-    {
-        $id->delete();
+        $room -> delete();
     }
 }
