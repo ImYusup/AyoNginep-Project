@@ -6,8 +6,15 @@ use App\TableData\Users;
 
 class UserController extends Controller
 {
-    public function  listUser () {
-        $list  = Users::all();
-        return $list;
+    public function index()
+    {
+        return users::all();
+        // ::with(['favorites', 'rooms', 'orders'])
+        //     -> get();
+    }
+
+    public function show(Users $user)
+    {
+        return $user;
     }
 }
