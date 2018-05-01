@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\TableData\Users;
+use App\TableData\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,6 +13,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TableData\Users::class, 10)->create();
+        factory(App\TableData\User::class, 10)->create();
     }
 }
