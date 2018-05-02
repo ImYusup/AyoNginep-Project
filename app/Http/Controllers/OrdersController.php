@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\TableData\Orders;
 use App\TableData\Order_details;
 use Illuminate\Http\Request;
+use App\TableData\Users;
+use App\TableData\Rooms;
+use App\Mail\LandlordOrder;
+use App\Mail\TenantOrder;
 
 class OrdersController extends Controller
 {
@@ -30,7 +34,13 @@ class OrdersController extends Controller
             'guest' => $request -> guest
         ]);
 
-        return $request;
+        $uid = Rooms::find($request -> room_id)->user_id;
+        $landlord = Users::find($uid);
+        
+        $tenant = Users::find($request -> user_id);
+
+        \Mail::to($landlord -> email) -> send(new LandlordOrder($landlord));
+        \Mail::to($tenant -> email) -> send(new TenantOrder($tenant));
     }
 
     public function show($id)
