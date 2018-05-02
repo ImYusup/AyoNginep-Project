@@ -17,6 +17,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+<<<<<<< HEAD
+Route::get('/users', 'UserController@index')->middleware('auth:api');
+Route::post('/login', 'UserController@login');
+Route::post('/register', 'UserController@register');
+// Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/userdetails', 'UserController@getDetails');
+// });
+
+Route::get('/favorites', 'FavoritesController@index');
+Route::get('/favorites/{favorite}', 'FavoritesController@show');
+Route::post('/favorites', 'FavoritesController@store');
+Route::delete('/favorites/{favorite}', 'FavoritesController@destroy');
+=======
 Route::group(['middleware' => 'cors'], function() {
     Route::get('/users', 'UserController@index');
     Route::get('/users/{user}', 'UserController@show');
@@ -28,6 +41,7 @@ Route::group(['middleware' => 'cors'], function() {
     Route::get('/favorites/{favorite}', 'FavoritesController@show');
     Route::post('/favorites', 'FavoritesController@store');
     Route::delete('/favorites/{favorite}', 'FavoritesController@destroy');
+>>>>>>> 191047bd186e63b2c5b121769c5326f585bc07ae
 
     Route::get('/rooms', 'RoomsController@index');
     Route::get('/rooms/{id}', 'RoomsController@show');
