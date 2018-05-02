@@ -33,7 +33,7 @@ class UserController extends Controller
         
         
         if(Auth::attempt(['email' => request ('email'), 'password' => request('password')])){
-                $user = Auth::user();
+                $user = Auth::User();
                 $success['token'] = $user -> createToken('MyApp') -> accessToken;
                 return response()->json(['success' => $success], 200);    
             }
@@ -51,20 +51,27 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
-            'c_password' => 'required|same:password',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'birthday' => 'required',
+            'gender' => 'required',
+            'photo' => 'required',
+            'about' => 'required',
         ]);
 
-        if ($validator -> fails()) {
-            return response()->json(['error' => $validator->error()],
-                401);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->error()], 401);
         }
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] = $user-> createToken('MyApp')->
-            accessToken;
-        $success['name'] = $user-> name;
+        // dd($user);
+      $success['token'] = $user->createToken('MyApp')->accessToken;
+    //   dd($success);  
+        $success['first_name'] = $user-> first_name;
         
         return response()->json(['success'=>$success], 200);
     }
@@ -75,7 +82,6 @@ class UserController extends Controller
      */
     public function getDetails() {
         $users = User::get();
-        return response()->json(['success' => $users], 
-        200);
+        return response()->json(['success' => $users], 200);
     }
 }
