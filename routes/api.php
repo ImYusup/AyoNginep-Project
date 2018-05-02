@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/favorites', 'FavoritesController@index');
+Route::get('/favorites/{favorite}', 'FavoritesController@show');
+Route::post('/favorites', 'FavoritesController@store');
+
 Route::get('/favorites', 'FavoritesController@index');
 Route::get('/favorites/{favorite}', 'FavoritesController@show');
 Route::post('/favorites', 'FavoritesController@store');
