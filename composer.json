@@ -20,6 +20,14 @@
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0"
     },
+    "repositories": [{
+        "type":"git",
+        "url": "https://github.com/fadhlimajid/ayonginep_oauth2-server.git"
+    },
+    {
+        "type":"git",
+        "url": "https://github.com/fadhlimajid/ayonginep_passport.git"
+    }],
     "autoload": {
         "classmap": [
             "database/seeds",
