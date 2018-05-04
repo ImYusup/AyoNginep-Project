@@ -13,17 +13,11 @@ use Validator;
 
 class UserController extends Controller
 {
-    // public $successStatus = 200;
-    
     public function index () {
         return User::with(['favorites', 'rooms', 'orders'])
-            ->get();
+        ->get();
     }
     
-    /**
-     * login api
-     * @return  \Illuminate\Http\Response
-     */
     public function login (Request $request) {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
@@ -34,15 +28,14 @@ class UserController extends Controller
             return response()->json(['error' => $validator->errors()],401); 
         }
         
-        
         if(Auth::attempt(['email' => request ('email'), 'password' => request('password')])){
-                $user = Auth::User();
-                $success['token'] = $user -> createToken('MyApp') -> accessToken;
-                return response()->json(['success' => $success], 200);    
-            }
+            $user = Auth::User();
+            $success['token'] = $user -> createToken('User') -> accessToken;
+            return response()->json($success, 200);    
+        }
         else {
            return response()->json(['error'=>'Unauthorised'], 401); 
-        }    
+        }
     }
 
     /**
@@ -50,18 +43,14 @@ class UserController extends Controller
      *  @return \Illuminate\Http\Response
      */
     public function register (Request $request)
-     {
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'password' => 'required',
-            // 'first_name' => 'required',
-            // 'last_name' => 'required',
-            // 'address' => 'required',
-            // 'phone' => 'required',
-            // 'birthday' => 'required',
-            // 'gender' => 'required',
-            // 'photo' => 'required',
-            // 'about' => 'required',
+            'c_password' => 'required|same:password',
+            'birthday' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -71,28 +60,14 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        // dd($user);
-        $success['token'] = $user->createToken('MyApp')->accessToken;
-        // dd($success);  
         $success['first_name'] = $user-> first_name;
+        $success['token'] = $user->createToken('User')->accessToken;
         
-        return response()->json(['success'=>$success], 200);
-    }
+        return response()->json($success, 200);
 
-    /**
-     * details api
-     * @return \Illuminate\Http\Response 
-     */
-    public function getDetails() {
-        $users = User::get();
-        return response()->json(['success' => $users], 200);
     }
-
-    /**
-     * this is for CRUD user
-     * 
-     */
-    public function store(Request $request)
+     
+    public function show(Users $user)
     {
         $rar = User::create([
             'email' => $request -> email,
@@ -126,14 +101,7 @@ class UserController extends Controller
         // ]);
     }
 
-    public function show($id)
-    {
-        return User::with(['favorites','rooms','orders'])
-            -> where('id', $id)
-            -> get();
-    }
-   
-    public function update(Request $request, User $user)
+    public function update(Request $request, Users $user)
     {
         $user -> update($request->all());
     }
