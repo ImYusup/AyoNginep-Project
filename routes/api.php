@@ -17,12 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users', 'UserController@index')->middleware('auth:api');
+Route::get('/users', 'UserController@index'); //->middleware('auth:api');
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
-// Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/userdetails', 'UserController@getDetails');
-// });
+});
 
 Route::get('/favorites', 'FavoritesController@index');
 Route::get('/favorites/{favorite}', 'FavoritesController@show');
@@ -72,7 +72,7 @@ Route::group(['middleware' => 'cors'], function() {
     Route::get('/amenity_items', 'AmenityItemsController@index');
     Route::get('/amenity_items/{id}', 'AmenityItemsController@show');
     Route::post('/amenity_items', 'AmenityItemsController@store');
-    Route::patch('/amenity_items/{amenity_item}', 'AmenityItemsController@update');
+    //Route::patch('/amenity_items/{amenity_item}', 'AmenityItemsController@update');
     Route::delete('/amenity_items/{amenity_item}', 'AmenityItemsController@destroy');
 
     Route::get('/orders', 'OrdersController@index');

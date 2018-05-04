@@ -26,7 +26,7 @@ class Rooms extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\TableData\Users', 'user_id');
+        return $this->belongsTo('App\TableData\User', 'user_id');
     }
 
     public function favorites()

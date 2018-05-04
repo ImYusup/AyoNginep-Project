@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\TableData\Orders;
 use App\TableData\Order_details;
 use Illuminate\Http\Request;
-use App\TableData\Users;
+use App\TableData\User;
 use App\TableData\Rooms;
 use App\Mail\LandlordOrder;
 use App\Mail\TenantOrder;

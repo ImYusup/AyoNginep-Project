@@ -19,11 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-<<<<<<< HEAD
-        
-=======
         // \Barryvdh\Cors\HandleCors::class,
->>>>>>> 191047bd186e63b2c5b121769c5326f585bc07ae
     ];
 
     /**
@@ -36,15 +32,12 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-<<<<<<< HEAD
             \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
-=======
 
->>>>>>> 191047bd186e63b2c5b121769c5326f585bc07ae
         ],
 
         'api' => [
@@ -69,10 +62,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-<<<<<<< HEAD
-        
-=======
         'cors' => \Barryvdh\Cors\HandleCors::class, // add this line to enable cors to your routes
->>>>>>> 191047bd186e63b2c5b121769c5326f585bc07ae
     ];
 }

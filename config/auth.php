@@ -70,17 +70,9 @@ return [
             'model' => App\TableData\User::class,
         ],
 
-<<<<<<< HEAD
-        // 'users' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Admin::class,
-        // ],
-=======
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
-        ],
->>>>>>> 4da802fce44f06ccd48d67ae85916804e78e2cd8
     ],
 
     /*
@@ -105,5 +97,7 @@ return [
             'expire' => 60,
         ],
     ],
+  ]
 
 ];
+

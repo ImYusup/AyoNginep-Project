@@ -13,7 +13,7 @@ class RoomsController extends Controller
 {
     public function index()
     {
-        return rooms::with(['categories','favorites','photos','order_details','room_capacities','amenities'])
+        return rooms::with(['users','categories','favorites','photos','order_details','room_capacities','amenities'])
             -> get();
     }
 

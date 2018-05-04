@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\TableData\User;
+use App\TableData\Favorites;
+use App\TableData\Rooms;
+use App\TableData\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +16,8 @@ class UserController extends Controller
     // public $successStatus = 200;
     
     public function index () {
-        return users::all();
+        return User::with(['favorites', 'rooms', 'orders'])
+            ->get();
     }
     
     /**
@@ -42,7 +46,7 @@ class UserController extends Controller
     }
 
     /**
-     *  Register api
+     *  register api
      *  @return \Illuminate\Http\Response
      */
     public function register (Request $request)
@@ -50,14 +54,14 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
-            'birthday' => 'required',
-            'gender' => 'required',
-            'photo' => 'required',
-            'about' => 'required',
+            // 'first_name' => 'required',
+            // 'last_name' => 'required',
+            // 'address' => 'required',
+            // 'phone' => 'required',
+            // 'birthday' => 'required',
+            // 'gender' => 'required',
+            // 'photo' => 'required',
+            // 'about' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -68,8 +72,8 @@ class UserController extends Controller
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         // dd($user);
-      $success['token'] = $user->createToken('MyApp')->accessToken;
-    //   dd($success);  
+        $success['token'] = $user->createToken('MyApp')->accessToken;
+        // dd($success);  
         $success['first_name'] = $user-> first_name;
         
         return response()->json(['success'=>$success], 200);
@@ -84,27 +88,57 @@ class UserController extends Controller
         return response()->json(['success' => $users], 200);
     }
 
-     
-    public function show(Users $user)
-    {
-        return $user;
-    }
-
+    /**
+     * this is for CRUD user
+     * 
+     */
     public function store(Request $request)
     {
-        // $user = new Users;
-        // $users->email = $request->email;
-        // $users->password = $request->password;
-        // $users->save();
+        $rar = User::create([
+            'email' => $request -> email,
+            'password' => $request -> password,
+            'first_name' => $request -> first_name,
+            'last_name' => $request -> last_name,
+            'address' => $request -> address,
+            'phone' => $request -> phone,
+            'birthday' => $request -> birthday,
+            'gender' => $request -> gender,
+            'photo' => $request -> photo,
+            'about' => $request -> about
+        ]);
+
+        $rid = $rar->id;
         
+
+        // favorites::create([
+        //     'room_id' => $rid,
+        //     '' => $request -> 
+        // ]);
+
+        // rooms::create([
+        //     'room_id' => $rid,
+        //     '' => $request -> 
+        // ]);   
+
+        // orders::create([
+        //     'room_id' => $rid,
+        //     '' => $request -> 
+        // ]);
     }
-    
-    public function update(Request $request, Users $user)
+
+    public function show($id)
+    {
+        return User::with(['favorites','rooms','orders'])
+            -> where('id', $id)
+            -> get();
+    }
+   
+    public function update(Request $request, User $user)
     {
         $user -> update($request->all());
     }
 
-    public function destroy(Users $user)
+    public function destroy(User $user)
     {
         $user -> delete();
     }

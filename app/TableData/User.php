@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+//Authenticatable <- extends
 
 class User extends Authenticatable
 {
@@ -46,11 +47,11 @@ class User extends Authenticatable
 
     public function rooms()
     {
-        return $this->hasMany('App\TableData\Rooms', 'room_id');
+        return $this->hasMany('App\TableData\Rooms', 'user_id');
     }
 
     public function orders()
     {
-        return $this->hasMany('App\TableData\Orders', 'order_id');
+        return $this->hasMany('App\TableData\Orders', 'user_id');
     }
 }
