@@ -46,11 +46,11 @@ class User extends Authenticatable
 
     public function rooms()
     {
-        return $this->hasMany('App\TableData\Rooms', 'room_id');
+        return $this->hasMany('App\TableData\Rooms', 'user_id');
     }
 
     public function orders()
     {
-        return $this->hasMany('App\TableData\Orders', 'order_id');
+        return $this->hasMany('App\TableData\Orders', 'user_id');
     }
 }
