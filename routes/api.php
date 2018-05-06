@@ -19,19 +19,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'cors'], function() {
     Route::get('/admins', 'AdminController@index');//->middleware('auth:api', 'admin');
-    Route::post('/admins/login', 'AdminController@login');
 
     Route::get('/users', 'UserController@index')->middleware('auth:api', 'admin');
     Route::get('/users/{user}', 'UserController@show')->middleware('auth:api', 'user');
-    Route::post('/login', 'UserController@login');
     Route::post('/register', 'UserController@register');
     Route::patch('/users/{user}','UserController@update')->middleware('auth:api', 'user');
     Route::delete('/users/{user}','UserController@destroy')->middleware('auth:api', 'user');
 
-    Route::get('/favorites', 'FavoritesController@index')->middleware('auth:api', 'admin');
+    Route::get('/favorites', 'FavoritesController@index');//->middleware('auth:api', 'admin');
     Route::get('/favorites/{favorite}', 'FavoritesController@show')->middleware('auth:api', 'admin');
-    Route::post('/favorites', 'FavoritesController@store')->middleware('auth:api', 'user');
-    Route::delete('/favorites/{favorite}', 'FavoritesController@destroy')->middleware('auth:api', 'user');
+    Route::post('/favorites', 'FavoritesController@store');//->middleware('auth:api', 'user');
+    Route::delete('/favorites/{favorite}', 'FavoritesController@destroy');//->middleware('auth:api', 'user');
 
     Route::get('/rooms', 'RoomsController@index');
     Route::get('/rooms/{id}', 'RoomsController@show');
