@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
-use App\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +16,3 @@ use App\Admin;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
-
-Artisan::command('killadmin', function () {
-    $this->comment(Inspiring::quote());
-})->describe("Delete an admin's account.");
