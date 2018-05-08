@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Console\Command;
 use App\Admin;
 
-
 class DeleteAdminCommand extends Command
 {
-
     protected $signature = 'admin:kill';
 
     protected $description = "Delete an admin's account.";

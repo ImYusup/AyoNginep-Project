@@ -83,7 +83,6 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
-        ],
     ],
 
     /*
@@ -114,5 +113,7 @@ return [
             'expire' => 60,
         ],
     ],
+  ]
 
 ];
+

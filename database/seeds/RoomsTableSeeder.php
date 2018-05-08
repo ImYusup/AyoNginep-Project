@@ -13,6 +13,6 @@ class RoomsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TableData\Rooms::class, 100)->create();
+        factory(App\TableData\Rooms::class, 10)->create();
     }
 }

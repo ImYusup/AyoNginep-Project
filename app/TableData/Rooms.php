@@ -3,9 +3,11 @@
 namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
+use Cerbero\QueryFilters\FiltersRecords;
 
 class Rooms extends Model
 {
+    use FiltersRecords;
     /**
      * The attributes that are mass assignable.
      *
@@ -26,7 +28,7 @@ class Rooms extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\TableData\Users', 'user_id');
+        return $this->belongsTo('App\TableData\User', 'user_id');
     }
 
     public function favorites()

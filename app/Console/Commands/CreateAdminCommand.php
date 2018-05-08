@@ -13,11 +13,6 @@ class CreateAdminCommand extends Command
 
     protected $description = "Create a new admin's account.";
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
         $email = $this->ask("Insert the new admin's email: ");
