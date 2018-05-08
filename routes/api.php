@@ -20,25 +20,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'cors'], function() {
     Route::get('/admins', 'AdminController@index');//->middleware('auth:admin');
     Route::post('/admins/login', 'AdminController@login');
-
-    Route::get('/users', 'UserController@index')->middleware('auth:admin');
-    Route::get('/users/{user}', 'UserController@show')->middleware('auth:user');
+    
+    Route::get('/users/', 'UserController@index');//->middleware('auth:admin');
+    Route::get('/users/{id}', 'UserController@show')->middleware('auth:user');
     Route::post('/register', 'UserController@register');
     Route::patch('/users/{user}','UserController@update')->middleware('auth:user');
     Route::delete('/users/{user}','UserController@destroy')->middleware('auth:user');
-    Route::get('/users', 'UserController@filter');
     
     Route::get('/favorites', 'FavoritesController@index');//->middleware('auth:admin');
     Route::get('/favorites/{favorite}', 'FavoritesController@show');//->middleware('auth:admin');
     Route::post('/favorites', 'FavoritesController@store');//->middleware('auth:user');
     Route::delete('/favorites/{favorite}', 'FavoritesController@destroy');//->middleware('auth:user');
     
-    Route::get('/rooms', 'RoomsController@index');
+    Route::get('/rooms/search','RoomsController@search');
+    Route::get('/rooms/', 'RoomsController@index');
     Route::get('/rooms/{id}', 'RoomsController@show');
     Route::post('/rooms', 'RoomsController@store')->middleware('auth:user');
     Route::patch('/rooms/{room}', 'RoomsController@update')->middleware('auth:user');
     Route::delete('/rooms/{room}', 'RoomsController@destroy')->middleware('auth:user');
-    Route::get('/rooms', 'RoomsController@filter');
 
     Route::get('/categories','CategoriesController@index')->middleware('auth:admin');
     Route::get('/categories/{id}','CategoriesController@show')->middleware('auth:admin');

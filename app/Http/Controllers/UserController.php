@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TableData\UserFilters;
 use App\TableData\User;
 use App\TableData\Favorites;
 use App\TableData\Rooms;
@@ -13,9 +14,8 @@ use Validator;
 
 class UserController extends Controller
 {
-    public function index () {
-        return User::with(['favorites', 'rooms', 'orders'])
-        ->get();
+    public function index (UserFilters $filters) {
+        return User::filterBy($filters)->with(['favorites', 'rooms', 'orders'])->get();
     }
     
     public function register (Request $request)
@@ -43,22 +43,11 @@ class UserController extends Controller
 
     }
      
-    public function show(Users $user)
+    public function show($id)
     {
-        $rar = User::create([
-            'email' => $request -> email,
-            'password' => $request -> password,
-            'first_name' => $request -> first_name,
-            'last_name' => $request -> last_name,
-            'address' => $request -> address,
-            'phone' => $request -> phone,
-            'birthday' => $request -> birthday,
-            'gender' => $request -> gender,
-            'photo' => $request -> photo,
-            'about' => $request -> about
-        ]);
-
-        $rid = $rar->id;
+        return User::with(['favorites', 'rooms', 'orders'])
+        ->where('id',$id)
+        ->get();
     }
 
     public function update(Request $request, Users $user)
@@ -71,8 +60,4 @@ class UserController extends Controller
         $user -> delete();
     }
 
-    public function filter(UserFilters $filters)
-    {
-        return Users::filterBy($filters)->get();
-    }
 }
