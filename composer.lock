@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "892fd65fe44ce982523b52ef43f53dcc",
     "packages": [
         {
@@ -120,6 +121,7 @@
             "time": "2018-01-04T06:59:27+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "defuse/php-encryption",
             "version": "v2.2.0",
             "source": {
@@ -149,6 +151,43 @@
             "autoload": {
                 "psr-4": {
                     "Defuse\\Crypto\\": "src"
+=======
+            "name": "cerbero/query-filters",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cerbero90/query-filters.git",
+                "reference": "f8f96de1d95a08506475960bd3b192b47f6b9bde"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cerbero90/query-filters/zipball/f8f96de1d95a08506475960bd3b192b47f6b9bde",
+                "reference": "f8f96de1d95a08506475960bd3b192b47f6b9bde",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^5.3",
+                "illuminate/database": "^5.3",
+                "illuminate/http": "^5.3",
+                "illuminate/support": "^5.3",
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "^2.0",
+                "phpspec/phpspec": "^2.5",
+                "scrutinizer/ocular": "^1.1",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cerbero\\QueryFilters\\": "src"
+>>>>>>> ordering-filtering
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -157,6 +196,7 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Taylor Hornby",
                     "email": "taylor@defuse.ca",
                     "homepage": "https://defuse.ca/"
@@ -181,6 +221,25 @@
                 "symmetric key cryptography"
             ],
             "time": "2018-04-23T19:33:40+00:00"
+=======
+                    "name": "Andrea Marco Sartori",
+                    "email": "andrea.marco.sartori@gmail.com",
+                    "homepage": "https://github.com/cerbero90",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package to filter data based on the query string.",
+            "homepage": "https://github.com/cerbero90/query-filters",
+            "keywords": [
+                "cerbero",
+                "filters",
+                "laravel",
+                "query",
+                "query string",
+                "query-filters"
+            ],
+            "time": "2017-08-16T13:21:08+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -541,6 +600,7 @@
                 "trusted proxy"
             ],
             "time": "2018-02-07T20:20:57+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "firebase/php-jwt",
@@ -587,6 +647,8 @@
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
             "time": "2017-06-27T22:17:23+00:00"
+=======
+>>>>>>> ordering-filtering
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -993,6 +1055,7 @@
                 "framework",
                 "laravel"
             ],
+<<<<<<< HEAD
             "time": "2018-05-02T15:22:18+00:00"
         },
         {
@@ -1060,6 +1123,9 @@
                 "source": "https://github.com/laravel/passport"
             },
             "time": "2018-05-04T13:16:15+00:00"
+=======
+            "time": "2018-04-26T13:25:23+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "laravel/tinker",
@@ -1123,6 +1189,7 @@
                 "psysh"
             ],
             "time": "2018-04-16T12:10:37+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "lcobucci/jwt",
@@ -1231,6 +1298,8 @@
                 "listener"
             ],
             "time": "2015-05-21T12:24:47+00:00"
+=======
+>>>>>>> ordering-filtering
         },
         {
             "name": "league/flysystem",
@@ -1315,6 +1384,7 @@
                 "storage"
             ],
             "time": "2018-04-06T09:58:14+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "league/oauth2-server",
@@ -1384,6 +1454,8 @@
                 "server"
             ],
             "time": "2018-05-04T11:40:09+00:00"
+=======
+>>>>>>> ordering-filtering
         },
         {
             "name": "monolog/monolog",
@@ -1614,6 +1686,7 @@
                 "random"
             ],
             "time": "2018-04-04T21:24:14+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "phpseclib/phpseclib",
@@ -1706,6 +1779,8 @@
                 "x509"
             ],
             "time": "2018-04-15T16:55:05+00:00"
+=======
+>>>>>>> ordering-filtering
         },
         {
             "name": "psr/container",
@@ -2174,7 +2249,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-04-30T01:23:47+00:00"
+=======
+            "time": "2018-04-03T05:24:00+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/css-selector",
@@ -2283,7 +2362,11 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-04-30T16:59:37+00:00"
+=======
+            "time": "2018-04-03T05:24:00+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2448,7 +2531,11 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-04-30T01:05:59+00:00"
+=======
+            "time": "2018-04-03T05:24:00+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/http-kernel",
@@ -2534,7 +2621,11 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-04-30T19:45:57+00:00"
+=======
+            "time": "2018-04-06T16:25:03+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2593,7 +2684,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2018-04-26T10:06:28+00:00"
+=======
+            "time": "2018-01-30T19:27:44+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/polyfill-php72",
@@ -2648,7 +2743,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
             "time": "2018-04-26T10:06:28+00:00"
+=======
+            "time": "2018-01-31T17:43:24+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/process",
@@ -2698,6 +2797,7 @@
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
             "time": "2018-04-03T05:24:00+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "symfony/psr-http-message-bridge",
@@ -2758,6 +2858,8 @@
                 "psr-7"
             ],
             "time": "2017-12-19T00:31:44+00:00"
+=======
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/routing",
@@ -2835,7 +2937,11 @@
                 "uri",
                 "url"
             ],
+<<<<<<< HEAD
             "time": "2018-04-20T06:20:23+00:00"
+=======
+            "time": "2018-04-04T13:50:32+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/translation",
@@ -2903,7 +3009,11 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-04-30T01:23:47+00:00"
+=======
+            "time": "2018-02-22T10:50:29+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "symfony/var-dumper",
@@ -2972,7 +3082,11 @@
                 "debug",
                 "dump"
             ],
+<<<<<<< HEAD
             "time": "2018-04-26T16:12:06+00:00"
+=======
+            "time": "2018-04-04T05:10:37+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3070,6 +3184,7 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -3122,6 +3237,8 @@
                 "psr-7"
             ],
             "time": "2018-02-26T15:44:50+00:00"
+=======
+>>>>>>> ordering-filtering
         }
     ],
     "packages-dev": [
@@ -3888,7 +4005,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2018-04-29T14:59:09+00:00"
+=======
+            "time": "2018-04-06T15:39:20+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -4154,7 +4275,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2018-04-29T15:09:19+00:00"
+=======
+            "time": "2018-04-18T13:41:53+00:00"
+>>>>>>> ordering-filtering
         },
         {
             "name": "phpunit/phpunit-mock-objects",

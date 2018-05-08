@@ -105,6 +105,7 @@ class UserController extends Controller
     {
         $user -> update($request->all());
     }
+<<<<<<< HEAD
 
     public function destroy(User $user)
     {
@@ -112,3 +113,10 @@ class UserController extends Controller
     }
 
 }
+=======
+    public function filter(UserFilters $filters)
+    {
+        return Users::filterBy($filters)->get();
+    }
+}
+>>>>>>> ordering-filtering

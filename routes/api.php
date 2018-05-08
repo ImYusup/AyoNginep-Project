@@ -29,6 +29,8 @@ Route::group(['middleware' => 'cors'], function() {
 
     Route::get('/users', 'UserController@index')->middleware('auth:api', 'admin');
     Route::get('/users/{user}', 'UserController@show')->middleware('auth:api', 'user');
+    Route::get('/users', 'UserController@filter');
+    Route::get('/rooms', 'RoomsController@filter');
     Route::post('/login', 'UserController@login');
     Route::post('/register', 'UserController@register');
     Route::patch('/users/{user}','UserController@update')->middleware('auth:api', 'user');
@@ -44,6 +46,7 @@ Route::group(['middleware' => 'cors'], function() {
     Route::post('/rooms', 'RoomsController@store')->middleware('auth:api', 'user');
     Route::patch('/rooms/{room}', 'RoomsController@update')->middleware('auth:api', 'user');
     Route::delete('/rooms/{room}', 'RoomsController@destroy')->middleware('auth:api', 'user');
+   
 
     Route::get('/categories','CategoriesController@index')->middleware('auth:api', 'admin');
     Route::get('/categories/{id}','CategoriesController@show')->middleware('auth:api', 'admin');
@@ -85,4 +88,5 @@ Route::group(['middleware' => 'cors'], function() {
     Route::get('/order_details/{id}', 'OrderDetailsController@show')->middleware('auth:api', 'user');
     Route::post('/order_details', 'OrderDetailsController@store')->middleware('auth:api', 'user');
     Route::delete('/order_details/{order_detail}', 'OrderDetailsController@destroy')->middleware('auth:api','user');
+
 });

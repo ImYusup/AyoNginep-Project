@@ -3,9 +3,11 @@
 namespace App\TableData;
 
 use Illuminate\Database\Eloquent\Model;
+use Cerbero\QueryFilters\FiltersRecords;
 
 class Rooms extends Model
 {
+    use FiltersRecords;
     /**
      * The attributes that are mass assignable.
      *
