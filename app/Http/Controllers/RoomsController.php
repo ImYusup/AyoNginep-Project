@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\TableData\Rooms;
+use App\TableData\RoomFilters;
 use App\TableData\Photos;
 use App\TableData\Room_capacities;
 use App\TableData\Amenities;
@@ -67,4 +68,10 @@ class RoomsController extends Controller
     {
         $room -> delete();
     }
+    public function filter(RoomFilters $filters)
+    {
+        return Rooms::filterBy($filters)->get();
+    }
+
+   
 }
