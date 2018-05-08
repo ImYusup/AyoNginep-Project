@@ -10,7 +10,7 @@ class UserFilters extends QueryFilters
                     ->where('first_name', 'like', '%' . $name . '%')
                     ->orWhere('last_name', 'like', '%' . $name . '%');
             } else {
-                return $this->query->all();
+                return $this->query;
             }
         }
         public function address($address) {
@@ -18,7 +18,7 @@ class UserFilters extends QueryFilters
                 return $this->query
                     ->where('address', 'like', '%' . $address . '%');
             } else {
-                return $this->query->all();
+                return $this->query;
             }
         }
     }
