@@ -17,12 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users', 'UserController@index'); //->middleware('auth:api');
-Route::post('/register', 'UserController@register');
-Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('/userdetails', 'UserController@getDetails');
-});
-
 Route::group(['middleware' => 'cors'], function() {
     Route::get('/admins', 'AdminController@index');//->middleware('auth:admin');
     Route::post('/admins/login', 'AdminController@login');
