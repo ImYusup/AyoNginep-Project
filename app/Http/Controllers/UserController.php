@@ -18,30 +18,6 @@ class UserController extends Controller
         ->get();
     }
     
-    public function login (Request $request) {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()],401); 
-        }
-        
-        if(Auth::attempt(['email' => request ('email'), 'password' => request('password')])){
-            $user = Auth::User();
-            $success['token'] = $user -> createToken('User') -> accessToken;
-            return response()->json($success, 200);    
-        }
-        else {
-           return response()->json(['error'=>'Unauthorised'], 401); 
-        }
-    }
-
-    /**
-     *  register api
-     *  @return \Illuminate\Http\Response
-     */
     public function register (Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -83,40 +59,20 @@ class UserController extends Controller
         ]);
 
         $rid = $rar->id;
-        
-
-        // favorites::create([
-        //     'room_id' => $rid,
-        //     '' => $request -> 
-        // ]);
-
-        // rooms::create([
-        //     'room_id' => $rid,
-        //     '' => $request -> 
-        // ]);   
-
-        // orders::create([
-        //     'room_id' => $rid,
-        //     '' => $request -> 
-        // ]);
     }
 
     public function update(Request $request, Users $user)
     {
         $user -> update($request->all());
     }
-<<<<<<< HEAD
 
     public function destroy(User $user)
     {
         $user -> delete();
     }
 
-}
-=======
     public function filter(UserFilters $filters)
     {
         return Users::filterBy($filters)->get();
     }
 }
->>>>>>> ordering-filtering

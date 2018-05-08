@@ -14,12 +14,20 @@ class DeleteAdminCommand extends Command
 
     public function handle()
     {
-        $email = $this->ask("Insert the admin's email address you wish to delete.");
-        $account = Admin::where('email', $email)->first();
-        $account -> delete();
+        $email = $this->ask("Insert the admin's email address you wish to delete: ");
+        $confirmation = $this->ask("Are You Sure? (Y/N)");
+        $confirmation = strtolower($confirmation);
 
-        if(response()->json(200)){
-            $this->comment("It's done.");
+        if ($confirmation === 'y'){
+            $admin = Admin::where('email', $email);
+            if ($admin) {
+                $admin -> delete();
+                $this->comment("It's done.");
+            } else {
+                $this->comment("Invalid email address.");                
+            }
+        } else {
+            $this->comment("You cancelled the admin's account deletion.");            
         }
     }
 }
