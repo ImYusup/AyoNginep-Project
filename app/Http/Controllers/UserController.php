@@ -15,26 +15,6 @@ class UserController extends Controller
             ->get();
     }
     
-    public function login (Request $request) {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()],401); 
-        }
-        
-        if(Auth::attempt(['email' => request ('email'), 'password' => request('password')])){
-            $user = Auth::User();
-            $success['token'] = $user -> createToken('User') -> accessToken;
-            return response()->json($success, 200);    
-        }
-        else {
-           return response()->json(['error'=>'Unauthorised'], 401); 
-        }
-    }
-
     public function register (Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -54,7 +34,7 @@ class UserController extends Controller
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         $success['first_name'] = $user-> first_name;
-        $success['token'] = $user->createToken('User')->accessToken;
+        $success['access_token'] = $user->createToken('User')->accessToken;
         
         return response()->json($success, 200);
 

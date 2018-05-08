@@ -46,12 +46,12 @@ return [
             'provider' => 'admins',
         ],
 
-        'users' => [
+        'user' => [
             'driver' => 'passport',
             'provider' => 'users',
         ],
         
-        'admins' => [
+        'admin' => [
             'driver' => 'passport',
             'provider' => 'admins'
         ],
