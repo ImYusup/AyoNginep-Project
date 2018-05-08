@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'cors'], function() {
     Route::get('/users', 'UserController@index');
     Route::get('/users/{user}', 'UserController@show');
+    Route::get('/users', 'UserController@filter');
     
     Route::get('/favorites', 'FavoritesController@index');
     Route::get('/favorites/{favorite}', 'FavoritesController@show');

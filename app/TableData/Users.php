@@ -4,10 +4,14 @@ namespace App\TableData;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Cerbero\QueryFilters\FiltersRecords;
+
 
 class Users extends Authenticatable
 {
     use Notifiable;
+    use FiltersRecords;
+
 
     /**
      * The attributes that are mass assignable.

@@ -10,6 +10,7 @@ use App\TableData\Amenities;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+
 class RoomsController extends Controller
 {
     public function index()
