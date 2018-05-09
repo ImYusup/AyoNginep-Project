@@ -32,8 +32,7 @@ Route::group(['middleware' => 'cors'], function() {
     Route::post('/favorites', 'FavoritesController@store');//->middleware('auth:user');
     Route::delete('/favorites/{favorite}', 'FavoritesController@destroy');//->middleware('auth:user');
     
-    Route::get('/rooms/search','RoomsController@search');
-    Route::get('/rooms/', 'RoomsController@index');
+    Route::get('/rooms/{search?}', 'RoomsController@index');
     Route::get('/rooms/{id}', 'RoomsController@show');
     Route::post('/rooms', 'RoomsController@store')->middleware('auth:user');
     Route::patch('/rooms/{room}', 'RoomsController@update')->middleware('auth:user');
