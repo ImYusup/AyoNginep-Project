@@ -15,12 +15,18 @@ class RoomsController extends Controller
 {
     public function index(RoomFilters $filters)
     {
-        return Rooms::filterBy($filters)->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'])->paginate(2);
+        return Rooms::filterBy($filters)
+            ->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'=>function ($query) {
+                $query->with('amenity_items');
+            }])
+            ->paginate(12);
     }
     public function search(Request $request){
         if($request->keyword){
             return Rooms::orderBy('name')
-            ->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'])
+            ->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'=>function ($query) {
+                $query->with('amenity_items');
+            }])
             ->where('name', 'LIKE', '%' . $request->keyword . '%')
             ->orWhere('district', 'LIKE', '%' . $request->keyword . '%')
             ->orWhere('address_detail', 'LIKE', '%' . $request->keyword . '%')
@@ -68,7 +74,9 @@ class RoomsController extends Controller
 
     public function show($id)
     {
-        return rooms::with(['categories','favorites','photos','order_details','room_capacities','amenities'])
+        return rooms::with(['categories','favorites','photos','order_details','room_capacities','amenities'=>function ($query) {
+            $query->with('amenity_items');
+        }])
             -> where('id', $id)
             -> get();
     }

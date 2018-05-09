@@ -27,7 +27,7 @@ class RoomFilters extends QueryFilters
                 }else if($from&&$to){
                     return $this->query->whereBetween('rent', [$from, $to]);
                 }else if($price=='low'){
-                    return $this->query;
+                    return $this->query->orderBy('rent', 'asc');
                 }
             } else {
                 return $this->query;
