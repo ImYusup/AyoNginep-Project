@@ -21,23 +21,7 @@ class RoomsController extends Controller
             }])
             ->paginate(12);
     }
-    public function search(Request $request){
-        if($request->keyword){
-            return Rooms::orderBy('name')
-            ->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'=>function ($query) {
-                $query->with('amenity_items');
-            }])
-            ->where('name', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhere('district', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhere('address_detail', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhereHas('categories', function($q) use ($request){
-                $q->where('name', 'LIKE', '%' . $request->keyword . '%');
-            })
-            ->paginate(1);
-        }else{
-            return $this->index();
-        }
-    }
+    
     public function store(Request $request)
     {
         $rar = rooms::create([

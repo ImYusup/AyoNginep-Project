@@ -8,14 +8,14 @@ class RoomFilters extends QueryFilters
             if( !empty( $name ) ) {
                 return $this->query->where('name', 'like', '%' . $name . '%');
             } else {
-                return $this->query->all();
+                return $this->query;
             }
         }
         public function district($disctrict){
             if( !empty( $disctrict ) ) {
                 return $this->query->where('district', 'like', '%' . $disctrict . '%');
             } else {
-                return $this->query->all();
+                return $this->query;
             }
         }
         public function price($price){
@@ -30,6 +30,19 @@ class RoomFilters extends QueryFilters
                     return $this->query->orderBy('rent', 'asc');
                 }
             } else {
+                return $this->query->orderBy('rent', 'asc');
+            }
+        }
+        public function keyword($keyword){
+            if($keyword){
+                return $this->query
+                ->where('name', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('district', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('address_detail', 'LIKE', '%' . $keyword . '%')
+                ->orWhereHas('categories', function($q) use ($keyword){
+                    $q->where('name', 'LIKE', '%' . $keyword . '%');
+                });
+            }else{
                 return $this->query;
             }
         }
