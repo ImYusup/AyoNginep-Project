@@ -15,23 +15,9 @@ class RoomsController extends Controller
 {
     public function index(RoomFilters $filters)
     {
-        return Rooms::filterBy($filters)->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'])->paginate(2);
+        return Rooms::filterBy($filters)->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'])->get();
     }
-    public function search(Request $request){
-        if($request->keyword){
-            return Rooms::orderBy('name')
-            ->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'])
-            ->where('name', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhere('district', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhere('address_detail', 'LIKE', '%' . $request->keyword . '%')
-            ->orWhereHas('categories', function($q) use ($request){
-                $q->where('name', 'LIKE', '%' . $request->keyword . '%');
-            })
-            ->paginate(1);
-        }else{
-            return $this->index();
-        }
-    }
+    
     public function store(Request $request)
     {
         $rar = rooms::create([
