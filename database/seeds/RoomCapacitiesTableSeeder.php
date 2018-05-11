@@ -13,6 +13,6 @@ class RoomCapacitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TableData\Room_capacities::class, 10)->create();
+        factory(App\TableData\Room_capacities::class, 50)->create();
     }
 }

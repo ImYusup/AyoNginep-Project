@@ -15,7 +15,7 @@ class CreateAmenityItemsTable extends Migration
     {
         Schema::create('amenity_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('item');
+            $table->string('item')->unique();
             $table->timestamps();
         });
     }

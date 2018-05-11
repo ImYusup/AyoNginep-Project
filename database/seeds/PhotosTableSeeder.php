@@ -13,6 +13,6 @@ class PhotosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TableData\Photos::class, 10)->create();
+        factory(App\TableData\Photos::class, 200)->create();
     }
 }

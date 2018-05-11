@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('district');
+            $table->string('city')->nullable();
             $table->string('coordinate');
             $table->text('address_detail');
             $table->string('category_id');
@@ -24,6 +25,7 @@ class CreateRoomsTable extends Migration
             $table->text('desc');
             $table->string('user_id');
             $table->text('house_rules');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

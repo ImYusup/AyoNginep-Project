@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\TableData\Users;
 
-class LandlordOrder extends Mailable
+class LandlordOrder extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

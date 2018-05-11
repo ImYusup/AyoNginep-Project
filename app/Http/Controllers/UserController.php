@@ -15,7 +15,9 @@ use Validator;
 class UserController extends Controller
 {
     public function index (UserFilters $filters) {
-        return User::filterBy($filters)->with(['favorites', 'rooms', 'orders'])->get();
+        return User::filterBy($filters)->with(['favorites' => function($query){
+            $query->with('rooms');
+        }, 'rooms', 'orders'])->get();
     }
     
     public function register (Request $request)
@@ -40,12 +42,13 @@ class UserController extends Controller
         $success['access_token'] = $user->createToken('User')->accessToken;
         
         return response()->json($success, 200);
-
     }
      
     public function show($id)
     {
-        return User::with(['favorites', 'rooms', 'orders'])
+        return User::with(['favorites' => function($query){
+            $query->with('rooms');
+        }, 'rooms', 'orders'])
         ->where('id',$id)
         ->get();
     }

@@ -14,7 +14,7 @@ class DeleteAdminCommand extends Command
 
     public function handle()
     {
-        $email = $this->ask("Insert the admin's email address you wish to delete: ");
+        $email = $this->ask("Insert the admin's email address you wish to delete");
         $confirmation = $this->ask("Are You Sure? (Y/N)");
         $confirmation = strtolower($confirmation);
 

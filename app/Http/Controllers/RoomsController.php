@@ -11,18 +11,29 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 
+
 class RoomsController extends Controller
 {
     public function index(RoomFilters $filters)
     {
-        return Rooms::filterBy($filters)->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'])->get();
+        return Rooms::filterBy($filters)
+            ->with(['users','categories','favorites','photos','order_details','room_capacities','amenities'=>function ($query) {
+                $query->with('amenity_items');
+            }])
+            ->paginate(12);
     }
     
     public function store(Request $request)
     {
+        $url = 'https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=cyoIR0bqbo4hNigrb3hB&app_code=HQZB4JTf6AO2co3O0D-ZMA&mode=retrieveAddresses&prox='.$request->coordinate.',250';
+        $response = \Requests::get($url)->body;
+        $address = json_decode($response, JSON_OBJECT_AS_ARRAY);
+        $address = $address['Response']['View'][0]['Result'][0]['Location']['Address'];
+
         $rar = rooms::create([
                 'name' => $request -> name,
-                'district' => $request -> district,
+                'district' => $address['District'],
+                'city' => $address['City'],
                 'coordinate' => $request -> coordinate,
                 'address_detail' => $request -> address_detail,
                 'category_id' => $request -> category_id,
@@ -54,7 +65,9 @@ class RoomsController extends Controller
 
     public function show($id)
     {
-        return rooms::with(['categories','favorites','photos','order_details','room_capacities','amenities'])
+        return rooms::with(['categories','favorites','photos','order_details','room_capacities','amenities'=>function ($query) {
+            $query->with('amenity_items');
+        }])
             -> where('id', $id)
             -> get();
     }

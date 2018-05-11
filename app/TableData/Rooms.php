@@ -17,6 +17,7 @@ class Rooms extends Model
     protected $fillable = [
         'name',
         'district',
+        'city',
         'coordinate',
         'address_detail',
         'category_id',
@@ -24,6 +25,7 @@ class Rooms extends Model
         'desc',
         'user_id',
         'house_rules',
+        'status'
     ];
 
     public function users()

@@ -14,6 +14,6 @@ class FavoritesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TableData\Favorites::class, 10)->create();
+        factory(App\TableData\Favorites::class, 50)->create();
     }
 }
