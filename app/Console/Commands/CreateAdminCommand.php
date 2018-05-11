@@ -15,19 +15,18 @@ class CreateAdminCommand extends Command
 
     public function handle()
     {
-        $email = $this->ask("Insert the new admin's email: ");
-        $password = $this->secret("Insert the new admin's password: ");
+        $email = $this->ask("Insert the new admin's email");
+        $password = $this->secret("Insert the new admin's password");
         $c_password = $this->secret("Type the password again: ");
 
-        if ($password === $c_password) {
+        if ($password == $c_password) {
             $admin = Admin::create([
                 'email' => $email,
                 'password' => bcrypt($password)
             ]);
-
-            $success['token'] = $admin->createToken('Admin')->accessToken;
             
-            if ($success){
+            $success['token'] = $admin->createToken('Admin')->accessToken;
+            if ($success) {
                 $this->comment("You're successfully added new admin account.");
             }
         } else {

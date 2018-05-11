@@ -42,7 +42,6 @@ class UserController extends Controller
         $success['access_token'] = $user->createToken('User')->accessToken;
         
         return response()->json($success, 200);
-
     }
      
     public function show($id)

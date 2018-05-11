@@ -14,6 +14,6 @@ class AmenitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TableData\Amenities::class, 10)->create();
+        factory(App\TableData\Amenities::class, 50)->create();
     }
 }

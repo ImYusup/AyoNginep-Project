@@ -19,7 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-        // \Barryvdh\Cors\HandleCors::class,
+        \Barryvdh\Cors\HandleCors::class,
     ];
 
     /**
@@ -62,7 +62,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'cors' => \Barryvdh\Cors\HandleCors::class, // add this line to enable cors to your routes
+        'cors' => \Barryvdh\Cors\HandleCors::class,
         'admin' => \App\Http\Middleware\AdminScope::class,
         'user' => \App\Http\Middleware\UserScope::class,
     ];
