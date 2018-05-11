@@ -25,7 +25,7 @@ class RoomsController extends Controller
     
     public function store(Request $request)
     {
-        $url = 'https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=cyoIR0bqbo4hNigrb3hB&app_code=HQZB4JTf6AO2co3O0D-ZMA&mode=retrieveAddresses&prox='.$request->coordinate.',250';
+        $url = 'https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?app_id=cyoIR0bqbo4hNigrb3hB&app_code=HQZB4JTf6AO2co3O0D-ZMA&mode=retrieveAddresses&prox='.$request->coordinate.',250';
         $response = \Requests::get($url)->body;
         $address = json_decode($response, JSON_OBJECT_AS_ARRAY);
         $address = $address['Response']['View'][0]['Result'][0]['Location']['Address'];
