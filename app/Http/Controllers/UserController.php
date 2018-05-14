@@ -14,6 +14,10 @@ use Validator;
 
 class UserController extends Controller
 {
+    // public funtion me() {
+    //     return Auth::user()->id;
+    // }
+
     public function index (UserFilters $filters) {
         return User::filterBy($filters)->with(['favorites' => function($query){
             $query->with('rooms');
@@ -44,22 +48,42 @@ class UserController extends Controller
         return response()->json($success, 200);
     }
      
-    public function show($id)
+    public function show()
     {
+        $me = Auth::user()->id;
+
         return User::with(['favorites' => function($query){
             $query->with('rooms');
         }, 'rooms', 'orders'])
-        ->where('id',$id)
+        ->where('id',$me)
         ->get();
     }
 
-    public function update(Request $request, Users $user)
+    public function update(Request $request)
     {
-        $user -> update($request->all());
+        // $me = Auth::user()->id;
+        // $user = User::where('id',$me);
+
+        // $user -> update($request->all());
+        // dd($request);
+        dd($request->all());
+        if ($request->hasFile('photo'))
+        {
+            dd($request);
+            $photo = $request->file('photo');
+            $name = time().'.'.$photo->getClientOriginalExtension();
+            $path = $photo->storeAs('storage/user_photos', $name);
+            // $user -> update($path);
+            $user->update(['photo' => $path]);
+            
+        }
     }
 
-    public function destroy(User $user)
+    public function destroy()
     {
+        $me = Auth::user()->id;
+        $user = User::where('id',$me);
+
         $user -> delete();
     }
 

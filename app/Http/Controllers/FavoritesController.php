@@ -22,10 +22,12 @@ class FavoritesController extends Controller
         return $request;
     }
 
-    public function show($id)
+    public function show()
     {
+        $me = Auth::user()->id;
+
         return favorites::with(['users', 'rooms'])
-            -> where('id', $id)
+            -> where('id', $me)
             -> get();
     }
 

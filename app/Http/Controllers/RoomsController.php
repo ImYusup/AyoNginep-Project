@@ -25,11 +25,13 @@ class RoomsController extends Controller
     
     public function store(Request $request)
     {
-        $url = 'https://reverse.geocoder.here.com/6.2/reversegeocode.json?app_id=cyoIR0bqbo4hNigrb3hB&app_code=HQZB4JTf6AO2co3O0D-ZMA&mode=retrieveAddresses&prox='.$request->coordinate.',250';
+        $url = 'https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?app_id=cyoIR0bqbo4hNigrb3hB&app_code=HQZB4JTf6AO2co3O0D-ZMA&mode=retrieveAddresses&prox='.$request->coordinate.',250';
         $response = \Requests::get($url)->body;
         $address = json_decode($response, JSON_OBJECT_AS_ARRAY);
         $address = $address['Response']['View'][0]['Result'][0]['Location']['Address'];
-
+        $aid = explode(',',$request -> amenity_item_id);
+        $image = $request->file('image');
+        
         $rar = rooms::create([
                 'name' => $request -> name,
                 'district' => $address['District'],
@@ -44,11 +46,16 @@ class RoomsController extends Controller
             ]);
 
         $rid = $rar->id;
-        
-        photos::create([
-            'room_id' => $rid,
-            'image' => $request -> image
-        ]);
+
+        for ($i=0; $i < sizeof($image); $i++) { 
+            $name = time().'.'.$image[$i]->getClientOriginalExtension();
+            $path = $image[$i]->storeAs('storage/room_photos', $name);
+
+            photos::create([
+                'room_id' => $rid,
+                'image' => $path
+            ]);
+        }
 
         room_capacities::create([
             'room_id' => $rid,
@@ -56,11 +63,13 @@ class RoomsController extends Controller
             'bathroom' => $request -> bathroom,
             'person' => $request -> person
         ]);
-
-        amenities::create([
-            'room_id' => $rid,
-            'amenity_item_id' => $request -> amenity_item_id
-        ]);
+        
+        for ($i=0; $i < sizeof($aid); $i++) { 
+            amenities::create([
+                'room_id' => $rid,
+                'amenity_item_id' => $aid[$i]
+            ]);    
+        }
     }
 
     public function show($id)

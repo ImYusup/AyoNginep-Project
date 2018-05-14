@@ -17,20 +17,20 @@ Route::group(['middleware' => 'cors'], function() {
     Route::get('/admins', 'AdminController@index')->middleware('auth:admin');
     Route::post('/admins/login', 'AdminController@login');
     
-    Route::get('/users/', 'UserController@index')->middleware('auth:admin');
-    Route::get('/users/{id}', 'UserController@show')->middleware('auth:user');
+    Route::get('/users/', 'UserController@index')->middleware('auth:user');
+    Route::get('/me', 'UserController@show')->middleware('auth:user');
     Route::post('/register', 'UserController@register');    
-    Route::patch('/users/{user}','UserController@update')->middleware('auth:user');
-    Route::delete('/users/{user}','UserController@destroy')->middleware('auth:user');
+    Route::post('/user','UserController@update');//->middleware('auth:user');
+    Route::delete('/user/kill','UserController@destroy')->middleware('auth:user');
     
     Route::get('/favorites', 'FavoritesController@index')->middleware('auth:admin');
-    Route::get('/favorites/{favorite}', 'FavoritesController@show')->middleware('auth:user');
+    Route::get('/favorite', 'FavoritesController@show')->middleware('auth:user');
     Route::post('/favorites', 'FavoritesController@store')->middleware('auth:user');
     Route::delete('/favorites/{favorite}', 'FavoritesController@destroy')->middleware('auth:user');
     
     Route::get('/rooms/', 'RoomsController@index');
     Route::get('/rooms/{id}', 'RoomsController@show');
-    Route::post('/rooms', 'RoomsController@store');//->middleware('auth:user');
+    Route::post('/rooms', 'RoomsController@store')->middleware('auth:user');
     Route::patch('/rooms/{room}', 'RoomsController@update')->middleware('auth:user');
     Route::delete('/rooms/{room}', 'RoomsController@destroy')->middleware('auth:user');
 
@@ -46,7 +46,7 @@ Route::group(['middleware' => 'cors'], function() {
     Route::patch('/room_capacities/{room_capacity}', 'RoomCapacitiesController@update')->middleware('auth:user');
     Route::delete('/room_capacities/{room_capacity}', 'RoomCapacitiesController@destroy')->middleware('auth:user');
 
-    Route::get('/photos', 'PhotosController@index')->middleware('auth:admin');
+    Route::get('/photos', 'PhotosController@index');//->middleware('auth:admin');
     Route::get('/photos/{id}', 'PhotosController@show');
     Route::post('/photos', 'PhotosController@store')->middleware('auth:user');
     Route::delete('/photos/{photo}', 'PhotosController@destroy')->middleware('auth:user');
@@ -59,10 +59,10 @@ Route::group(['middleware' => 'cors'], function() {
     Route::get('/amenity_items', 'AmenityItemsController@index')->middleware('auth:admin');
     Route::get('/amenity_items/{id}', 'AmenityItemsController@show')->middleware('auth:admin');
     Route::post('/amenity_items', 'AmenityItemsController@store')->middleware('auth:user');
-    Route::patch('/amenity_items/{amenity_item}', 'AmenityItemsController@update')->middleware('auth:admin');
+    Route::patch('/amenity_items/{amenity_item}', 'AmenityItemsController@update');//->middleware('auth:admin');
     Route::delete('/amenity_items/{amenity_item}', 'AmenityItemsController@destroy')->middleware('auth:admin');
 
-    Route::get('/orders', 'OrdersController@index')->middleware('auth:admin');
+    Route::get('/orders', 'OrdersController@index');//->middleware('auth:admin');
     Route::get('/orders/{id}', 'OrdersController@show')->middleware('auth:user');
     Route::post('/orders', 'OrdersController@store')->middleware('auth:user');
     Route::delete('/orders/{order}', 'OrdersController@destroy')->middleware('auth:api','user');
