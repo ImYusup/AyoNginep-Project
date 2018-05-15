@@ -44,22 +44,39 @@ class UserController extends Controller
         return response()->json($success, 200);
     }
      
-    public function show($id)
+    public function show()
     {
+        $me = Auth::user()->id;
+
         return User::with(['favorites' => function($query){
             $query->with('rooms');
         }, 'rooms', 'orders'])
-        ->where('id',$id)
+        ->where('id',$me)
         ->get();
     }
 
-    public function update(Request $request, Users $user)
+    public function update(Request $request)
     {
+        $me = Auth::user()->id;
+        $user = User::where('id',$me);
+
         $user -> update($request->all());
+
+        if ($request->hasFile('photo'))
+        {
+            $photo = $request->file('photo');
+            $name = time().'.'.$photo->getClientOriginalExtension();
+            $path = $photo->storeAs('storage/user_photos', $name);
+            $user->update(['photo' => $path]);
+            
+        }
     }
 
-    public function destroy(User $user)
+    public function destroy()
     {
+        $me = Auth::user()->id;
+        $user = User::where('id',$me);
+
         $user -> delete();
     }
 
