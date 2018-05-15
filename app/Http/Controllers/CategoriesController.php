@@ -25,7 +25,7 @@ class CategoriesController extends Controller
     public function show($id)
     {
         return categories::with('rooms')
-            -> where('id', $id)
+            -> where('room_id', $id)
             -> get();
     }
 

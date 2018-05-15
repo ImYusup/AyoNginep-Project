@@ -37,7 +37,7 @@ class PhotosController extends Controller
     public function show($id)
     {
         return photos::with('rooms')
-            -> where('id', $id)
+            -> where('room_id', $id)
             -> get();
     }
 

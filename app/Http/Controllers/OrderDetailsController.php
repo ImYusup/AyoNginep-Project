@@ -28,7 +28,7 @@ class OrderDetailsController extends Controller
     public function show($id)
     {
         return order_details::with(['orders', 'rooms'])
-            -> where('id', $id)
+            -> where('room_id', $id)
             -> get();
     }
 

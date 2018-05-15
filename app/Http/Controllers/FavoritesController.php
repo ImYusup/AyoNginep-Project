@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TableData\Favorites;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoritesController extends Controller
 {
@@ -26,8 +27,8 @@ class FavoritesController extends Controller
     {
         $me = Auth::user()->id;
 
-        return favorites::with(['users', 'rooms'])
-            -> where('id', $me)
+        return favorites::with('rooms')
+            -> where('user_id', $me)
             -> get();
     }
 

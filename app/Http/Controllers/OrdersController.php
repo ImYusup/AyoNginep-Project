@@ -46,7 +46,7 @@ class OrdersController extends Controller
     public function show($id)
     {
         return orders::with(['users', 'order_details'])
-            -> where('id', $id)
+            -> where('user_id', $id)
             -> get();
     }
 

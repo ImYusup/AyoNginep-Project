@@ -30,8 +30,7 @@ class AmenityItemsController extends Controller
 
     public function update(Request $request, amenity_items $amenity_item)
     {
-        dd($request->all());
-        // $amenity_item ->update($request -> all());        
+        $amenity_item ->update($request -> all());        
     }
 
     public function destroy(amenity_items $amenity_item)

@@ -27,7 +27,7 @@ class RoomCapacitiesController extends Controller
     public function show($id)
     {
         return room_capacities::with('rooms')
-            -> where('id', $id)
+            -> where('room_id', $id)
             -> get();
     }
 
