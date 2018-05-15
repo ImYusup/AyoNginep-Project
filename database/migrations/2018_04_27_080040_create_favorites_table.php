@@ -18,6 +18,7 @@ class CreateFavoritesTable extends Migration
             $table->string('user_id');
             $table->string('room_id');
             $table->timestamps();
+            $table->unique( array('user_id','room_id') );
         });
     }
 
