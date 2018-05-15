@@ -58,4 +58,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\TableData\Orders', 'user_id');
     }
+    public function verifyUser(){
+        return $this->hasOne('App\TableData\VerifyUser');
+    }
 }
