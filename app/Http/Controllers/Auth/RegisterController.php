@@ -8,8 +8,8 @@ use App\Mail\VerifyMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $success;
 
     /**
      * Create a new controller instance.
@@ -54,6 +54,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthday' => 'required'            
         ]);
     }
 
@@ -65,6 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $user =  User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -76,7 +80,7 @@ class RegisterController extends Controller
  
         \Mail::to($user->email)->send(new VerifyMail($user));
 
-        return $user;
+        return 'ok';
     }
 
     public function verifyUser($token)
@@ -92,10 +96,10 @@ class RegisterController extends Controller
                 $status = "Your e-mail is already verified. You can now login.";
             }
         }else{
-            return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
+            return $status;//redirect('/login')->with('warning', "Sorry your email cannot be identified.");
         }
  
-        return redirect('/login')->with('status', $status);
+        return $status;
     }
 
     protected function registered(Request $request, $user)
