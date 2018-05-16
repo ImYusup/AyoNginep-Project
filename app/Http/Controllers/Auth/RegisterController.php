@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'first_name' => 'required',
             'last_name' => 'required',
-            'birthday' => 'required'            
+            'birthday' => 'required'       
         ]);
     }
 

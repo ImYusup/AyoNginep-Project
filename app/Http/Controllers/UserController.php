@@ -27,56 +27,25 @@ class UserController extends Controller
             $query->with('rooms');
         }, 'rooms', 'orders'])->get();
     }
-    
-    // public function register (Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'email' => 'required|email',
-    //         'first_name' => 'required',
-    //         'last_name' => 'required',
-    //         'password' => 'required',
-    //         'c_password' => 'required|same:password',
-    //         'birthday' => 'required'
-    //     ]);
-
-    //     if ($validator->fails()) {
-    //         return response()->json(['error'=>$validator->error()], 401);
-    //     }
-
-    //     $input = $request->all();
-    //     $input['password'] = bcrypt($input['password']);
-    //     $user = User::create($input);
-    //     $success['first_name'] = $user-> first_name;
-    //     $success['access_token'] = $user->createToken('User')->accessToken;
-
-    //     $verifyUser = VerifyUser::create([
-    //         'user_id' => $user->id,
-    //         'token' => str_random(40)
-    //     ]);
- 
-    //     \Mail::to($user->email)->send(new VerifyMail($user));
-        
-    //     return response()->json($success, 200);
-    // }
-     
-
 
     public function login(Request $request){
         $user = User::where('email', $request->email)
-            ->where('password', $request->password)
+            // ->where('password', Hash::check($request->password))
             ->first();
 
-        if($user -> verified && $request -> newProvider == 'user'){
-            $success['access_token'] = $user->createToken('User')->accessToken;
-            return $success;
+        dd(Hash::check($request->password, $user->password));
+
+        if($user){
+            if($user -> verified && $request -> newProvider == 'user'){
+                $success['access_token'] = $user->createToken('User')->accessToken;
+                return $success;
+            } else {
+                return 'We sent you an activation code. Check your email and click on the link to verify.';
+            }
         } else {
-            return 'We sent you an activation code. Check your email and click on the link to verify.';
+            return 'Your email/password is invalid.';
         }
     }
-
-
-
-
 
     public function show()
     {
