@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\TableData\Orders;
-use App\TableData\Order_details;
-use Illuminate\Http\Request;
-use App\TableData\User;
-use App\TableData\Rooms;
 use App\Mail\LandlordOrder;
 use App\Mail\TenantOrder;
+use App\TableData\Order_details;
+use App\TableData\Orders;
+use App\TableData\Rooms;
+use App\TableData\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
@@ -20,8 +21,10 @@ class OrdersController extends Controller
 
     public function store(Request $request)
     {
+        $me = Auth::user()->id;
+
         $mao = orders::create([
-            'user_id' => $request -> user_id
+            'user_id' => $me
         ]);
 
         $oid = $mao->id;
