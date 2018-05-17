@@ -53,10 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'birthday' => 'required'       
+            'password' => 'required|string|min:6|confirmed',    
         ]);
     }
 
@@ -80,7 +77,7 @@ class RegisterController extends Controller
  
         \Mail::to($user->email)->send(new VerifyMail($user));
 
-        return 'ok';
+        return $user;
     }
 
     public function verifyUser($token)

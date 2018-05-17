@@ -9,7 +9,7 @@ use App\TableData\Room_capacities;
 use App\TableData\Amenities;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class RoomsController extends Controller
@@ -41,7 +41,7 @@ class RoomsController extends Controller
                 'category_id' => $request -> category_id,
                 'rent' => $request -> rent,
                 'desc' => $request -> desc,
-                'user_id' => $request -> user_id,
+                'user_id' => Auth::user()->id,
                 'house_rules' => $request -> house_rules
             ]);
 
@@ -84,6 +84,20 @@ class RoomsController extends Controller
     public function update(Request $request, rooms $room)
     {
         $room -> update($request->all());
+
+        if ($request->coordinate){
+            $url = 'https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?app_id=cyoIR0bqbo4hNigrb3hB&app_code=HQZB4JTf6AO2co3O0D-ZMA&mode=retrieveAddresses&prox='.$request->coordinate.',250';
+            $response = \Requests::get($url)->body;
+            $address = json_decode($response, JSON_OBJECT_AS_ARRAY);
+            $address = $address['Response']['View'][0]['Result'][0]['Location']['Address'];
+
+            $room -> update([
+                'coordinate' => $request->coordinate,
+                'district' => $address['District'],
+                'city' => $address['City']
+            ]);
+            
+        }
     }
 
     public function destroy(rooms $room)

@@ -15,7 +15,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Validator;
+
 
 
 class UserController extends Controller
@@ -29,16 +31,23 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
+
+        $url = 'http://localhost:8000/oauth/token';
+
         $user = User::where('email', $request->email)
-            // ->where('password', Hash::check($request->password))
             ->first();
 
-        dd(Hash::check($request->password, $user->password));
-
-        if($user){
-            if($user -> verified && $request -> newProvider == 'user'){
-                $success['access_token'] = $user->createToken('User')->accessToken;
-                return $success;
+        if(Hash::check($request->password, $user->password)){
+            if($user -> verified){
+                $response = \Requests::post($url,array(),[
+                    'email' => $request->email,
+                    'password' => $request->password,
+                    'client_id' => 2,
+                    'client_secret' => 'WtkGX4tzOvD1JfA60Bj0Bwm79DZmvXzUsrJ3lrhJ',
+                    'grant_type' => 'password',
+                    'newProvider' => 'user'
+                ]);
+                return $response->body;
             } else {
                 return 'We sent you an activation code. Check your email and click on the link to verify.';
             }
@@ -50,12 +59,18 @@ class UserController extends Controller
     public function show()
     {
         $me = Auth::user()->id;
-
-        return User::with(['favorites' => function($query){
+        $photo = Auth::user()->photo;
+        $query = User::with(['favorites' => function($query){
             $query->with('rooms');
         }, 'rooms', 'orders'])
         ->where('id',$me)
         ->get();
+
+        if($photo){
+            
+        };
+        // Storage::download($photo);
+        return $query;
     }
 
     public function update(Request $request)
