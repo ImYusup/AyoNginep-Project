@@ -37,10 +37,12 @@ class OrdersController extends Controller
             'guest' => $request -> guest
         ]);
 
-        $uid = Rooms::find($request -> room_id)->user_id;
-        $landlord = Users::find($uid);
+        $uid = Rooms::find($request -> room_id);
+        $landlord = Users::find($uid->user_id);
         
         $tenant = Users::find($request -> user_id);
+
+        $uid->update(['status' => 0]);
 
         \Mail::to($landlord -> email) -> send(new LandlordOrder($landlord));
         \Mail::to($tenant -> email) -> send(new TenantOrder($tenant));

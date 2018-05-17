@@ -80,8 +80,8 @@ class UserController extends Controller
             $photo = $request->file('photo');
             $name = time().'.'.$photo->getClientOriginalExtension();
             $path = $photo->storeAs('public/user_photos', $name);
+            $path = str_replace("public","storage",$path);
             $user->update(['photo' => $path]);
-            
         }
     }
 
