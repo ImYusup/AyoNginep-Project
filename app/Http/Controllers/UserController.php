@@ -59,17 +59,12 @@ class UserController extends Controller
     public function show()
     {
         $me = Auth::user()->id;
-        $photo = Auth::user()->photo;
         $query = User::with(['favorites' => function($query){
             $query->with('rooms');
         }, 'rooms', 'orders'])
         ->where('id',$me)
         ->get();
 
-        if($photo){
-            
-        };
-        // Storage::download($photo);
         return $query;
     }
 
@@ -84,7 +79,7 @@ class UserController extends Controller
         {
             $photo = $request->file('photo');
             $name = time().'.'.$photo->getClientOriginalExtension();
-            $path = $photo->storeAs('storage/user_photos', $name);
+            $path = $photo->storeAs('public/user_photos', $name);
             $user->update(['photo' => $path]);
             
         }

@@ -49,7 +49,7 @@ class RoomsController extends Controller
 
         for ($i=0; $i < sizeof($image); $i++) { 
             $name = time().'.'.$image[$i]->getClientOriginalExtension();
-            $path = $image[$i]->storeAs('storage/room_photos', $name);
+            $path = $image[$i]->storeAs('public/room_photos', $name);
 
             photos::create([
                 'room_id' => $rid,
