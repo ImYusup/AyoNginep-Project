@@ -28,6 +28,7 @@ class RegisterController extends Controller
 
     /**
      * Where to redirect users after registration.
+     * 
      *
      * @var string
      */
@@ -80,7 +81,7 @@ class RegisterController extends Controller
  
         \Mail::to($user->email)->send(new VerifyMail($user));
 
-        return 'ok';
+        return $user;
     }
 
     public function verifyUser($token)
@@ -96,15 +97,17 @@ class RegisterController extends Controller
                 $status = "Your e-mail is already verified. You can now login.";
             }
         }else{
-            return $status;//redirect('/login')->with('warning', "Sorry your email cannot be identified.");
+                $status = 'Sorry your email cannot be identified.';
         }
- 
+
         return $status;
     }
 
     protected function registered(Request $request, $user)
     {
         $this->guard()->logout();
-        return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+        // return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+        $status = 'We sent you an activation code. Check your email and click on the link to verify.';
+        return $status;
     }
 }
