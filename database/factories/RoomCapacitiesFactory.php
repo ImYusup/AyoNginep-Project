@@ -10,7 +10,7 @@ for ($i=1; $i <= 50 ; $i++) {
 
 $factory->define(App\TableData\Room_capacities::class, function (Faker $faker) {
     return [
-        'room_id'=>$faker->randomDigitNotNull,
+        'room_id'=>$faker->numberBetween(1, 50),
         'bed'=>$faker->randomDigitNotNull,
         'bathroom'=>$faker->randomDigitNotNull,
         'person'=>$faker->randomDigitNotNull,

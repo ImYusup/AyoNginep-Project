@@ -24,11 +24,12 @@ class PhotosController extends Controller
     {
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
-        $path = $image->storeAs('storage/room_photos', $name);
-        // Storage::disk('local')->put('file.txt', 'Contents');
+        $path = $image->storeAs('public/room_photos', $name);
+        $path = str_replace("public","storage",$path);
+
         photos::create([
             'room_id' => $request -> room_id,
-            'image' => $image
+            'image' => $path
         ]);
 
         return $request;

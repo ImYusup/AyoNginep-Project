@@ -19,7 +19,8 @@ Route::group(['middleware' => 'cors'], function() {
     
     Route::get('/users/', 'UserController@index')->middleware('auth:user');
     Route::get('/me', 'UserController@show')->middleware('auth:user');
-    Route::post('/register', 'UserController@register');    
+    Route::post('/login', 'UserController@login');
+    Route::post('/register', 'Auth\RegisterController@register');
     Route::post('/user','UserController@update')->middleware('auth:user');
     Route::delete('/user/kill','UserController@destroy')->middleware('auth:user');
     

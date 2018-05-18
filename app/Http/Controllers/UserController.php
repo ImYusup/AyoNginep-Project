@@ -2,57 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use App\TableData\UserFilters;
-use App\TableData\User;
+use App\Mail\VerifyMail; 
 use App\TableData\Favorites;
-use App\TableData\Rooms;
 use App\TableData\Orders;
+use App\TableData\Rooms;
+use App\TableData\User;
+use App\TableData\UserFilters;
+use App\TableData\VerifyUser;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Validator;
+
+
 
 class UserController extends Controller
 {
+    use AuthenticatesUsers;
+
     public function index (UserFilters $filters) {
         return User::filterBy($filters)->with(['favorites' => function($query){
             $query->with('rooms');
         }, 'rooms', 'orders'])->get();
     }
-    
-    public function register (Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'password' => 'required',
-            'c_password' => 'required|same:password',
-            'birthday' => 'required'
-        ]);
 
-        if ($validator->fails()) {
-            return response()->json(['error'=>$validator->error()], 401);
+    public function login(Request $request){
+
+        $url = 'http://localhost:8000/oauth/token';
+
+        $user = User::where('email', $request->email)
+            ->first();
+
+        if(Hash::check($request->password, $user->password)){
+            if($user -> verified){
+                $response = \Requests::post($url,array(),[
+                    'email' => $request->email,
+                    'password' => $request->password,
+                    'client_id' => 2,
+                    'client_secret' => 'WtkGX4tzOvD1JfA60Bj0Bwm79DZmvXzUsrJ3lrhJ',
+                    'grant_type' => 'password',
+                    'newProvider' => 'user'
+                ]);
+                return $response->body;
+            } else {
+                return 'We sent you an activation code. Check your email and click on the link to verify.';
+            }
+        } else {
+            return 'Your email/password is invalid.';
         }
-
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $success['first_name'] = $user-> first_name;
-        $success['access_token'] = $user->createToken('User')->accessToken;
-        
-        return response()->json($success, 200);
     }
-     
+
     public function show()
     {
         $me = Auth::user()->id;
-
-        return User::with(['favorites' => function($query){
+        $query = User::with(['favorites' => function($query){
             $query->with('rooms');
         }, 'rooms', 'orders'])
         ->where('id',$me)
         ->get();
+
+        return $query;
     }
 
     public function update(Request $request)
@@ -66,9 +79,9 @@ class UserController extends Controller
         {
             $photo = $request->file('photo');
             $name = time().'.'.$photo->getClientOriginalExtension();
-            $path = $photo->storeAs('storage/user_photos', $name);
+            $path = $photo->storeAs('public/user_photos', $name);
+            $path = str_replace("public","storage",$path);
             $user->update(['photo' => $path]);
-            
         }
     }
 

@@ -17,7 +17,7 @@ class CreateAdminCommand extends Command
     {
         $email = $this->ask("Insert the new admin's email");
         $password = $this->secret("Insert the new admin's password");
-        $c_password = $this->secret("Type the password again: ");
+        $c_password = $this->secret("Type the password again");
 
         if ($password == $c_password) {
             $admin = Admin::create([
